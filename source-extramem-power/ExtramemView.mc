@@ -173,23 +173,17 @@ class ExtramemView extends DatarunpremiumView {
 	   //! Check whether demoscreen is showed or the metrics 
 	   if (uShowDemo == false ) {
 
-		for (var i = 1; i < 8; ++i) {
+		for (var i = 1; i < 6; ++i) {
 
 		   	if ( i == 1 ) {			//!upper row, left    	
-	    		Coloring(dc,i,fieldValue[i],"018,029,100,019");
+	    		Coloring(dc,i,fieldValue[i],"000,029,119,028");
 		   	} else if ( i == 2 ) {	//!upper row, right
-		   		Coloring(dc,i,fieldValue[i],"120,029,100,019");
-	       	} else if ( i == 3 ) {  //!middle row, left
-	    		Coloring(dc,i,fieldValue[i],"000,093,072,019");
-		   	} else if ( i == 4 ) {	//!middle row, middle
-		 		Coloring(dc,i,fieldValue[i],"074,093,089,019");
-	      	} else if ( i == 5 ) {  //!middle row, right
-	    		Coloring(dc,i,fieldValue[i],"165,093,077,019");
-		   	} else if ( i == 6 ) {	//!lower row, left
-		   		Coloring(dc,i,fieldValue[i],"018,199,100,019");
-	      	} else if ( i == 7 ) {	//!lower row, right
-	    		Coloring(dc,i,fieldValue[i],"120,199,100,019");
-	    	}       	
+		   		Coloring(dc,i,fieldValue[i],"121,029,119,028");
+	       	} else if ( i == 3 ) {  //!lower row, left
+	    		Coloring(dc,i,fieldValue[i],"000,184,119,034");
+		   	} else if ( i == 4 ) {	//!lower row, right
+		 		Coloring(dc,i,fieldValue[i],"121,184,119,034");
+	      	}        	
 		}
 		
 		//! Show number of laps or clock with current time in top

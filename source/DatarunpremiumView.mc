@@ -111,11 +111,8 @@ class DatarunpremiumView extends Ui.DataField {
          var mApp = Application.getApp();
          metric[1]    	= mApp.getProperty("pUpperLeftMetric");
          metric[2]   	= mApp.getProperty("pUpperRightMetric");
-    	 metric[3]   	= mApp.getProperty("pMiddleLeftMetric");
-    	 metric[4] 		= mApp.getProperty("pMiddleMiddleMetric");    
-    	 metric[5]		= mApp.getProperty("pMiddleRightMetric");
-         metric[6]   	= mApp.getProperty("pBottomLeftMetric");
-         metric[7]  	= mApp.getProperty("pBottomRightMetric");
+         metric[3]   	= mApp.getProperty("pBottomLeftMetric");
+         metric[4]  	= mApp.getProperty("pBottomRightMetric");
          uRoundedPace        = mApp.getProperty("pRoundedPace");
          uBacklight          = mApp.getProperty("pBacklight");
          umyNumber			 = mApp.getProperty("myNumber");

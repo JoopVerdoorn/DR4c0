@@ -175,7 +175,7 @@ class CiqView extends DatarunpremiumView {
     	dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     	
         if ( fieldformat.equals("time" ) == true ) {    
-	    	if ( counter == 1 or counter == 2 or counter == 6 or counter == 7 ) {  
+	    	if ( counter == 1 or counter == 2 or counter == 3 or counter == 4 ) {  
 	    		var fTimerSecs = (fieldvalue % 60).format("%02d");
         		var fTimer = (fieldvalue / 60).format("%d") + ":" + fTimerSecs;  //! Format time as m:ss
 	    		var xx = x;
@@ -189,7 +189,7 @@ class CiqView extends DatarunpremiumView {
         			dc.drawText(xx, y, Graphics.FONT_NUMBER_MEDIUM, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);	
         	}
         } else {
-        	dc.drawText(x, y, Graphics.FONT_NUMBER_MEDIUM, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        	dc.drawText(x, y, Graphics.FONT_NUMBER_HOT, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         }        
         dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);               
         mColourFont = originalFontcolor;
