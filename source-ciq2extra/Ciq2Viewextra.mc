@@ -57,18 +57,19 @@ class CiqView extends ExtramemView {
 		//!Calculate HR-metrics
 		var info = Activity.getActivityInfo();
 		
-        mLapTimerTimeHR = jTimertime - mLastLapTimeHRMarker;
+        mLapTimerTimeHR = mHeartrateTime - mLastLapTimeHRMarker;
         var mLapElapsedHeartrate = mElapsedHeartrate - mLastLapHeartrateMarker;
 
 		AverageHeartrate = Math.round((mHeartrateTime != 0) ? mElapsedHeartrate/mHeartrateTime : 0);  		
-		LapHeartrate = (mLapTimerTimeHR != 0) ? Math.round(mLapElapsedHeartrate/mLapTimerTimeHR) : 0;
+		LapHeartrate = (mLapTimerTimeHR != 0) ? Math.round(mLapElapsedHeartrate/mLapTimerTimeHR) : 0; 					
+		LapHeartrate = (mLaps == 1) ? AverageHeartrate : LapHeartrate;
 		LastLapHeartrate			= (mLastLapTimerTime != 0) ? Math.round(mLastLapElapsedHeartrate/mLastLapTimerTime) : 0;		
 
 
 		dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
 
 		var i = 0; 
-	    for (i = 1; i < 8; ++i) {
+	    for (i = 1; i < 5; ++i) {
 	        if (metric[i] == 40) {
     	        fieldValue[i] = (info.currentSpeed != null) ? 3.6*info.currentSpeed*1000/unitP : 0;
         	    fieldLabel[i] = "Speed";
@@ -141,7 +142,7 @@ class CiqView extends ExtramemView {
         xl = xl.toNumber();
         yl = yl.toNumber();
 
-		if ( metric[counter] == 46 or metric[counter] == 37 ) { 
+		if ( metric[counter] == 46 or metric[counter] == 38 ) { 
 			fieldvalue = mZone[counter];
 		}
 

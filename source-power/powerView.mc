@@ -106,25 +106,15 @@ class PowerView extends CiqView {
 
         //! Calculate power-lap time and convert timers from milliseconds to seconds
 		var info = Activity.getActivityInfo();
-        mLapTimerTimePwr = jTimertime - mLastLapTimePwrMarker;
+        mLapTimerTimePwr = mPowerTime - mLastLapTimePwrMarker;
 
 		//!Calculate powermetrics
 		var mLapElapsedPower = mElapsedPower - mLastLapPowerMarker;
         
 		AveragePower = Math.round((mPowerTime != 0) ? mElapsedPower/mPowerTime : 0);  
-
-		if (mLapTimerTimePwr == 1 ) {  
-			LapPower = (info.currentPower != null) ? info.currentPower : 0;
-			mLapElapsedPower = LapPower;
-		} else if (mLapTimerTimePwr == 2 ) {
-			LapPower = (info.currentPower != null) ? info.currentPower : 0;
-			mLapElapsedPower = 2*LapPower;		
-		} else {   
-			LapPower = (mLapTimerTimePwr != 0) ? Math.round(mLapElapsedPower/mLapTimerTimePwr) : 0; 	
-		}
+		LapPower = (mLapTimerTimePwr != 0) ? Math.round(mLapElapsedPower/mLapTimerTimePwr) : 0; 	
 		LapPower = (mLaps == 1) ? AveragePower : LapPower; 
-		LastLapPower			= (mLastLapTimerTimePwr != 0) ? Math.round(mLastLapElapsedPower/mLastLapTimerTimePwr) : 0;
-
+		LastLapPower = (mLastLapTimerTimePwr != 0) ? Math.round(mLastLapElapsedPower/mLastLapTimerTimePwr) : 0;
 
 		//!Calculate average power
         var AveragePower3sec  	 			= 0;
@@ -189,7 +179,7 @@ class PowerView extends CiqView {
 		}		
 
 		var i = 0; 
-	    for (i = 1; i < 8; ++i) {	    
+	    for (i = 1; i < 5; ++i) {	    
         	if (metric[i] == 20) {
             	fieldValue[i] = (info.currentPower != null) ? info.currentPower : 0;
             	fieldLabel[i] = "Power";

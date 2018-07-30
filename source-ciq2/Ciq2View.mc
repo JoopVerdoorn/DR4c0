@@ -51,20 +51,11 @@ class CiqView extends DatarunpremiumView {
 		//!Calculate HR-metrics
 		var info = Activity.getActivityInfo();
 		
-        mLapTimerTimeHR = jTimertime - mLastLapTimeHRMarker;
+        mLapTimerTimeHR = mHeartrateTime - mLastLapTimeHRMarker;
         var mLapElapsedHeartrate = mElapsedHeartrate - mLastLapHeartrateMarker;
 
 		AverageHeartrate = Math.round((mHeartrateTime != 0) ? mElapsedHeartrate/mHeartrateTime : 0);  		
-		
-		if (mLapTimerTimeHR == 1 ) {  
-			LapHeartrate = (info.currentPower != null) ? info.currentPower : 0;
-			mLapElapsedHeartrate = LapHeartrate;
-		} else if (mLapTimerTimeHR == 2 ) {
-			LapHeartrate = (info.currentPower != null) ? info.currentPower : 0;
-			mLapElapsedHeartrate = 2*LapHeartrate;		
-		} else {   
-			LapHeartrate = (mLapTimerTimeHR != 0) ? Math.round(mLapElapsedHeartrate/mLapTimerTimeHR) : 0; 	
-		}				
+		LapHeartrate = (mLapTimerTimeHR != 0) ? Math.round(mLapElapsedHeartrate/mLapTimerTimeHR) : 0; 					
 		LapHeartrate = (mLaps == 1) ? AverageHeartrate : LapHeartrate;
 		LastLapHeartrate			= (mLastLapTimerTime != 0) ? Math.round(mLastLapElapsedHeartrate/mLastLapTimerTime) : 0;		
 
@@ -72,7 +63,7 @@ class CiqView extends DatarunpremiumView {
 		dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
 
 		var i = 0; 
-	    for (i = 1; i < 8; ++i) {
+	    for (i = 1; i < 5; ++i) {
 	        if (metric[i] == 40) {
     	        fieldValue[i] = (info.currentSpeed != null) ? 3.6*info.currentSpeed*1000/unitP : 0;
         	    fieldLabel[i] = "Speed";
@@ -139,10 +130,6 @@ class CiqView extends DatarunpremiumView {
         xl = xl.toNumber();
         yl = yl.toNumber();
 
-		if ( metric[counter] == 46 or metric[counter] == 37 ) { 
-			fieldvalue = mZone[counter];
-		}
-
         if ( fieldformat.equals("0decimal" ) == true ) {
         	fieldvalue = Math.round(fieldvalue);
         } else if ( fieldformat.equals("1decimal" ) == true ) {
@@ -159,7 +146,8 @@ class CiqView extends DatarunpremiumView {
         	Temp = (fieldvalue != 0 ) ? (unitP/fieldvalue).toLong() : 0;
         	fieldvalue = (Temp / 60).format("%0d") + ":" + Math.round(Temp % 60).format("%02d");
         } else if ( fieldformat.equals("power" ) == true ) {     
-        	fieldvalue = Math.round(fieldvalue);       	
+        	fieldvalue = Math.round(fieldvalue);  
+//!PowerWarning = 2;     	
         	if (PowerWarning == 1) { 
         		mColourFont = Graphics.COLOR_PURPLE;
         	} else if (PowerWarning == 2) { 
