@@ -26,11 +26,6 @@ class DatarunpremiumView extends Ui.DataField {
 	hidden var ID2;
 	hidden var WatchID = (mySettings.uniqueIdentifier != null) ? mySettings.uniqueIdentifier : 914;
 	hidden var watchType = mySettings.partNumber;
-	var screenWidth = mySettings.screenWidth;
-	var screenShape = mySettings.screenShape;
-	var screenHeight = mySettings.screenHeight;
-	var isTouchScreen = mySettings.isTouchScreen;  //!boolean
-	var numberisTouchScreen = 9;
 
 	hidden var uShowlaps = false;
 	hidden var uShowDemo = false;
@@ -100,7 +95,11 @@ class DatarunpremiumView extends Ui.DataField {
            
     hidden var uPowerZones                  = "184:Z1:227:Z2:255:Z3:284:Z4:326:Z5:369";
 	hidden var metric = [1, 2, 3, 4, 5];
-	
+	hidden var Garminfont_value_x_small = Graphics.FONT_NUMBER_MILD;
+	hidden var Garminfont_value_small = Graphics.FONT_NUMBER_MEDIUM;
+	hidden var Garminfont_value = Graphics.FONT_NUMBER_HOT;
+	hidden var Garminfont_label = Graphics.FONT_XTINY;
+	hidden var VA3FR645 = true;
 
     function initialize() {
          DataField.initialize();
@@ -197,12 +196,6 @@ class DatarunpremiumView extends Ui.DataField {
 		var info = Activity.getActivityInfo();
         mLapTimerTime = jTimertime - mLastLapTimeMarker;
 
-    	//! Check license (base, further check in CIQ1 and CIQ2)
-    	if (isTouchScreen == false) {
-        	numberisTouchScreen = 3;
-    	} else {
-    		numberisTouchScreen = 6;
-    	}
 		ID0 = watchType.substring(5, 9);
 		ID0 = 511+ID0.toNumber();
 		

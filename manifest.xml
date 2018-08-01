@@ -11,6 +11,9 @@
             <iq:product id="fenix5splus"/>
             <iq:product id="fenix5xplus"/>
             <iq:product id="d2charlie"/>
+            <iq:product id="vivoactive3"/>
+            <iq:product id="fr645m"/>
+            <iq:product id="fr645"/>
         </iq:products>
         <iq:permissions>
             <iq:uses-permission id="UserProfile"/>

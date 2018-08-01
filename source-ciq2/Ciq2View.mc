@@ -32,14 +32,22 @@ class CiqView extends DatarunpremiumView {
 		//! call the parent onUpdate to do the base logic
 		DatarunpremiumView.onUpdate(dc);
 
-    	//! Setup back- and foregroundcolours
-		mColourFont = Graphics.COLOR_BLACK;
-		mColourFont1 = Graphics.COLOR_BLACK;
-		mColourLine = Graphics.COLOR_BLUE;
-		mColourBackGround = Graphics.COLOR_WHITE;
-
 //! specifieke code hierboven	
 //!====================================================================
+
+
+    	//! Setup back- and foregroundcolours
+		if (uBlackBackground == true ){
+			mColourFont = Graphics.COLOR_WHITE;
+			mColourFont1 = Graphics.COLOR_WHITE;
+			mColourLine = Graphics.COLOR_GREEN;
+			mColourBackGround = Graphics.COLOR_BLACK;
+		} else {
+			mColourFont = Graphics.COLOR_BLACK;
+			mColourFont1 = Graphics.COLOR_BLACK;
+			mColourLine = Graphics.COLOR_BLUE;
+			mColourBackGround = Graphics.COLOR_WHITE;
+		}
 
 		var mHash = WatchID.hashCode();
 		mHash = (mHash > 0) ? mHash : -mHash;
@@ -84,10 +92,6 @@ class CiqView extends DatarunpremiumView {
 	            fieldValue[i] = (info.averageSpeed != null) ? 3.6*info.averageSpeed*1000/unitP : 0;
     	        fieldLabel[i] = "Avg Spd";
         	    fieldFormat[i] = "2decimal";
-			} else if (metric[i] == 46) {
-	            fieldValue[i] = 0; //! becomes HR zone later
-    	        fieldLabel[i] = "HR zone";
-        	    fieldFormat[i] = "0decimal";
 			} else if (metric[i] == 47) {
     	        fieldValue[i] = LapHeartrate;
         	    fieldLabel[i] = "Lap HR";
@@ -129,7 +133,14 @@ class CiqView extends DatarunpremiumView {
         yh = yh.toNumber();
         xl = xl.toNumber();
         yl = yl.toNumber();
-
+        
+        if (VA3FR645 == true) {
+        	x = x;
+        	y = y;
+        	xh = xh;
+        	yh = yh;
+        }
+			
         if ( fieldformat.equals("0decimal" ) == true ) {
         	fieldvalue = Math.round(fieldvalue);
         } else if ( fieldformat.equals("1decimal" ) == true ) {
@@ -146,8 +157,7 @@ class CiqView extends DatarunpremiumView {
         	Temp = (fieldvalue != 0 ) ? (unitP/fieldvalue).toLong() : 0;
         	fieldvalue = (Temp / 60).format("%0d") + ":" + Math.round(Temp % 60).format("%02d");
         } else if ( fieldformat.equals("power" ) == true ) {     
-        	fieldvalue = Math.round(fieldvalue);  
-//!PowerWarning = 2;     	
+        	fieldvalue = Math.round(fieldvalue);  	
         	if (PowerWarning == 1) { 
         		mColourFont = Graphics.COLOR_PURPLE;
         	} else if (PowerWarning == 2) { 
@@ -171,15 +181,15 @@ class CiqView extends DatarunpremiumView {
 	    		if (fieldvalue > 3599) {
             		var fTimerHours = (fieldvalue / 3600).format("%d");
             		xx = xms;
-            		dc.drawText(xh, yh, Graphics.FONT_NUMBER_MILD, fTimerHours, Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
+            		dc.drawText(xh, yh, Garminfont_value_x_small, fTimerHours, Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
             		fTimer = (fieldvalue / 60 % 60).format("%02d") + ":" + fTimerSecs;  
         		}
-        			dc.drawText(xx, y, Graphics.FONT_NUMBER_MEDIUM, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);	
+        			dc.drawText(xx, y, Garminfont_value_small, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);	
         	}
         } else {
-        	dc.drawText(x, y, Graphics.FONT_NUMBER_HOT, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        	dc.drawText(x, y, Garminfont_value, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         }        
-        dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);               
+        dc.drawText(xl, yl, Garminfont_label,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);               
         mColourFont = originalFontcolor;
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     }

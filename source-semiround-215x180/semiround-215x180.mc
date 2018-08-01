@@ -25,10 +25,6 @@ class DeviceView extends PowerView {
 		//! Draw separator lines
         dc.setColor(mColourLine, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
-
-		//! Draw separator lines
-        dc.setColor(mColourLine, Graphics.COLOR_TRANSPARENT);
-        dc.setPenWidth(2);
         dc.drawLine(0, 90,  218, 90);
         dc.drawLine(109, 24,  109, 158);
 
@@ -42,14 +38,11 @@ class DeviceView extends PowerView {
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
  		
 		//! Show clock with current time in top
-		var myTime = Toybox.System.getClockTime(); 
-    	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
-		dc.drawText(109, -4, Graphics.FONT_NUMBER_MILD, strTime, Graphics.TEXT_JUSTIFY_CENTER);
-
-//!fieldValue[1]=10000;
-//!fieldValue[2]=10000;
-//!fieldValue[3]=10000;
-//!fieldValue[4]=10000;
+		if (uShowlaps == false) {
+			var myTime = Toybox.System.getClockTime(); 
+	    	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
+			dc.drawText(109, -4, Graphics.FONT_NUMBER_MILD, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+		}
 
 		for (var i = 1; i < 5; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left

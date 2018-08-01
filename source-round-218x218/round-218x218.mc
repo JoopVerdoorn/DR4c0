@@ -25,10 +25,6 @@ class DeviceView extends PowerView {
 		//! Draw separator lines
         dc.setColor(mColourLine, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
-
-		//! Draw separator lines
-        dc.setColor(mColourLine, Graphics.COLOR_TRANSPARENT);
-        dc.setPenWidth(2);
         dc.drawLine(0, 109,  218, 109);
         dc.drawLine(109, 29,  109, 191);
 
@@ -42,10 +38,12 @@ class DeviceView extends PowerView {
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
  		
 		//! Show clock with current time in top
-		var myTime = Toybox.System.getClockTime(); 
-	   	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
-		dc.drawText(108, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
-
+		if (uShowlaps == false) {
+			var myTime = Toybox.System.getClockTime(); 
+	    	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
+			dc.drawText(108, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+		}
+		
 		for (var i = 1; i < 5; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"059,079,065,010,089,066,040");
@@ -57,7 +55,6 @@ class DeviceView extends PowerView {
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"162,137,170,115,147,153,175");
 	       	}     	
 		}
-
 
 		//! Bottom battery indicator
 		var mBattcolor = (pwr > 15) ? mColourFont : Graphics.COLOR_RED;

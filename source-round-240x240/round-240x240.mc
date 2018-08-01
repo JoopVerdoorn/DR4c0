@@ -43,19 +43,22 @@ class DeviceView extends PowerView {
 	    	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
 			dc.drawText(120, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
 		}
-	
+
+fieldValue[1]=20000;
+fieldValue[2]=20000;
+fieldValue[3]=20000;
+fieldValue[4]=20000;
 		for (var i = 1; i < 5; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,085,066,009,086,073,041");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,085,072,012,099,073,041");
 	       	} else if ( i == 2 ) {	//!upper row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"173,085,166,112,086,167,041");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"173,085,182,123,099,167,041");
 	       	} else if ( i == 3 ) {  //!lower row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,153,066,009,143,073,199");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,153,072,012,145,073,199");
 	       	} else if ( i == 4 ) {	//!lower row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"173,153,166,112,143,167,199");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"173,153,182,123,167,167,199");
 	       	}     	
 		}
-
 
 		//! Bottom battery indicator
 		var mBattcolor = (pwr > 15) ? mColourFont : Graphics.COLOR_RED;

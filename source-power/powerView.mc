@@ -19,7 +19,7 @@ class PowerView extends CiqView {
     var Power2 									= 0;
     var Power3 									= 0;
 	var vibrateseconds = 0;
-	hidden var mT = 0;     
+//!	hidden var mT = 0;     
     
 	//! it's good practice to always have an initialize, make sure to call your parent class here!
     function initialize() {

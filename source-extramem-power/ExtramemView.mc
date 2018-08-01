@@ -235,13 +235,13 @@ class ExtramemView extends DatarunpremiumView {
 		//! Display colored labels on screen
 		for (var i = 1; i < 5; ++i) {
 		   	if ( i == 1 ) {			//!upper row, left    	
-	    		Coloring(dc,i,fieldValue[i],"018,029,100,019");
+	    		Coloring(dc,i,fieldValue[i],"020,029,100,025");
 		   	} else if ( i == 2 ) {	//!upper row, right
-		   		Coloring(dc,i,fieldValue[i],"120,029,100,019");
+		   		Coloring(dc,i,fieldValue[i],"120,029,100,025");
 	       	} else if ( i == 3 ) {  //!lower row, left
-	    		Coloring(dc,i,fieldValue[i],"000,093,072,019");
+	    		Coloring(dc,i,fieldValue[i],"020,188,100,026");
 		   	} else if ( i == 4 ) {	//!lower row, middle
-		 		Coloring(dc,i,fieldValue[i],"074,093,089,019");
+		 		Coloring(dc,i,fieldValue[i],"120,188,100,026");
 	    	}       	
 		}
 		
@@ -299,7 +299,7 @@ class ExtramemView extends DatarunpremiumView {
 	        mZ4under = mZ4under.toNumber();        
     	    mZ5under = mZ5under.toNumber();
         	mZ5upper = mZ5upper.toNumber();
-        } else if (metric[counter] == 8 or metric[counter] == 9 or metric[counter] == 10 or metric[counter] == 16 or metric[counter] == 11 or metric[counter] == 12 or metric[counter] == 40 or metric[counter] == 41 or metric[counter] == 42 or metric[counter] == 43 or metric[counter] == 44) {  //! Pace=8, Pace 5s=9, L Pace=10, L-1 Pace=11, AvgPace=12, Speed=40, Spd 5s=41, L Spd=42, LL Spd=43, Avg Spd=44
+        } else if (metric[counter] == 8 or metric[counter] == 9 or metric[counter] == 10 or metric[counter] == 16 or metric[counter] == 17 or metric[counter] == 11 or metric[counter] == 12 or metric[counter] == 40 or metric[counter] == 41 or metric[counter] == 42 or metric[counter] == 43 or metric[counter] == 44) {  //! Pace=8, Pace 5s=9, L Pace=10, L-1 Pace=11, AvgPace=12, Speed=40, Spd 5s=41, L Spd=42, LL Spd=43, Avg Spd=44
             mZ1under = avgSpeed*0.9;
             mZ2under = avgSpeed*0.95;
             mZ3under = avgSpeed;
@@ -314,7 +314,7 @@ class ExtramemView extends DatarunpremiumView {
             mZ5under = 99999999;
             mZ5upper = 99999999; 
         }
-//!System.println(testvalue);
+
         mZone[counter] = 0;
         if (testvalue >= mZ5upper) {
             mfillColour = Graphics.COLOR_PURPLE;
@@ -345,7 +345,7 @@ class ExtramemView extends DatarunpremiumView {
         		mfillColour = Graphics.COLOR_RED;
         	}
         }
-System.println(mfillColour);
+
 		dc.setColor(mfillColour, Graphics.COLOR_TRANSPARENT);
         dc.fillRectangle(x, y, w, h);
 	}

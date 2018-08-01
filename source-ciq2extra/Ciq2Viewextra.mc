@@ -31,6 +31,9 @@ class CiqView extends ExtramemView {
 		//! call the parent onUpdate to do the base logic
 		ExtramemView.onUpdate(dc);
 
+//! specifieke code hierboven	
+//!====================================================================
+
     	//! Setup back- and foregroundcolours
 		if (uBlackBackground == true ){
 			mColourFont = Graphics.COLOR_WHITE;
@@ -50,9 +53,6 @@ class CiqView extends ExtramemView {
 		ID1 = mHash % 315127+1864;
 		mtest = ((ID2-329)*315127 + ID1-1864) % 74539;
 		mtest = (mtest < 1000) ? mtest + 80000 : mtest;
-
-//!====================================================================
-
 		
 		//!Calculate HR-metrics
 		var info = Activity.getActivityInfo();
@@ -186,19 +186,17 @@ class CiqView extends ExtramemView {
 	    		if (fieldvalue > 3599) {
             		var fTimerHours = (fieldvalue / 3600).format("%d");
             		xx = xms;
-            		dc.drawText(xh, yh, Graphics.FONT_NUMBER_MILD, fTimerHours, Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
+            		dc.drawText(xh, yh, Garminfont_value_x_small, fTimerHours, Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
             		fTimer = (fieldvalue / 60 % 60).format("%02d") + ":" + fTimerSecs;  
         		}
-        			dc.drawText(xx, y, Graphics.FONT_NUMBER_MEDIUM, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);	
+        			dc.drawText(xx, y, Garminfont_value_small, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);	
         	}
         } else {
-        	dc.drawText(x, y, Graphics.FONT_NUMBER_HOT, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        	dc.drawText(x, y, Garminfont_value, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         }        
-        dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);               
+        dc.drawText(xl, yl, Garminfont_label,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);               
         mColourFont = originalFontcolor;
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     }
 
-
 }
-
