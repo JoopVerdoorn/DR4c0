@@ -5,7 +5,7 @@
     	<font id="Garmin4" filename="fonts/Oswald83metriBigfontplus.fnt"/>
 	</fonts>
   <properties>
-    <property id="pAppversion" type="string">1.22</property>
+    <property id="pAppversion" type="string">1.23</property>
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>
     <property id="pMiddleLeftMetric" type="number">45</property>    
@@ -38,8 +38,8 @@
     <!-- Beta name:
     <string id="AppName">Datarun premium with 4 metrics</string>
     -->
-    <string id="AppVersion">1.22</string>
-    <string id="lDummysetting4version">Version 1.22 of Datarun premium with 4 metrics (dummy setting)</string>
+    <string id="AppVersion">1.23</string>
+    <string id="lDummysetting4version">Version 1.23 of Datarun premium with 4 metrics (dummy setting)</string>
     <string id="lTimerDisplay">Timer field</string>
     <string id="lTimerTimer">Timer</string>
     <string id="lTimerLap">Current lap time</string>
@@ -57,7 +57,7 @@
     <string id="lMiddleRightMetric">Middle right field</string> 
     <string id="lBottomLeftMetric">Bottom left field</string>
     <string id="lBottomRightMetric">Bottom right field</string>
-    <string id="lETAfromLap">Calculation of ETA based on elapsed time of last lap, instead of total average speed (only for Fenix 5x, Fenix 5 plus series and D2 Charlie)</string>
+    <string id="lETAfromLap">Calculation of ETA based on elapsed time of last lap, instead of total average speed (only for FR645(m), Fenix 5x, Fenix 5 plus series and D2 Charlie)</string>
     <string id="lCurrentPace">Current pace</string>
     <string id="lAvgPace">Overall average pace</string>
     <string id="lLapPace">Current lap pace</string>
@@ -66,7 +66,7 @@
     <string id="lTEffect">Aerobic training effect</string>
     <string id="lETA">Estimated time of arrival (only for Fenix 5x, Fenix 5 plus series and D2 Charlie)</string>
     <string id="lETAfrompace">Estimated finished time based on average or last lap pace (only for Fenix 5x, Fenix 5 plus series and D2 Charlie)</string>
-	<string id="lETAdeviation">Deviation from required finish in hours, minutes and seconds (only for Fenix 5x, Fenix 5 plus series and D2 Charlie)</string>
+	<string id="lETAdeviation">Deviation from required finish in hours, minutes and seconds (only for FR645(m), Fenix 5x, Fenix 5 plus series and D2 Charlie)</string>
 	<string id="lETArequiredpace">Required pace to meet required finish time</string>
     <string id="lElevationGain">Elevation gain (only for Fenix 5x, Fenix 5 plus series and D2 Charlie)</string>
     <string id="lElevationLoss">Elevation loss (only for Fenix 5x, Fenix 5 plus series and D2 Charlie)</string>

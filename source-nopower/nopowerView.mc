@@ -12,7 +12,7 @@ class PowerView extends CiqView {
 	//! it's good practice to always have an initialize, make sure to call your parent class here!
     function initialize() {
         CiqView.initialize();
-        VA3FR645 = true;
+        VA3VA3M = true;
     }
 
     //! Calculations we need to do every second even when the data field is not visible
@@ -43,6 +43,7 @@ class PowerView extends CiqView {
         mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
         mLastLapHeartrateMarker     = mElapsedHeartrate;
         mLastLapTimeHRMarker        = mHeartrateTime;
+        mLaps++;
     }
 
     //! Current activity is ended

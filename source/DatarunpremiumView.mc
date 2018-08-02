@@ -99,7 +99,7 @@ class DatarunpremiumView extends Ui.DataField {
 	hidden var Garminfont_value_small = Graphics.FONT_NUMBER_MEDIUM;
 	hidden var Garminfont_value = Graphics.FONT_NUMBER_HOT;
 	hidden var Garminfont_label = Graphics.FONT_XTINY;
-	hidden var VA3FR645 = true;
+	hidden var VA3VA3M = true;
 
     function initialize() {
          DataField.initialize();

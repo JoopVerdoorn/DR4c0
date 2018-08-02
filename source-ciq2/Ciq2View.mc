@@ -134,11 +134,10 @@ class CiqView extends DatarunpremiumView {
         xl = xl.toNumber();
         yl = yl.toNumber();
         
-        if (VA3FR645 == true) {
-        	x = x;
-        	y = y;
-        	xh = xh;
-        	yh = yh;
+        if (VA3VA3M == true) {
+        	xms = (counter == 2 or counter == 4) ? xms+3 : xms;
+        	xh = (counter == 1 or counter == 3) ? xh-3 : xh;
+        	yh = (counter == 3) ? yh-3 : yh;
         }
 			
         if ( fieldformat.equals("0decimal" ) == true ) {
