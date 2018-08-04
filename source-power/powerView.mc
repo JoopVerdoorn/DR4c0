@@ -18,12 +18,22 @@ class PowerView extends CiqView {
 	var Power1 									= 0;
     var Power2 									= 0;
     var Power3 									= 0;
-	var vibrateseconds = 0;
-//!	hidden var mT = 0;     
-    
+    hidden var uPowerZones                  = "184:Z1:227:Z2:255:Z3:284:Z4:326:Z5:369";
+	var vibrateseconds = 0;     
+    var mlastaltitude = 0;
+    hidden var aaltitude = 0;
+	hidden var mElevationGain = 0;
+    hidden var mElevationLoss = 0;
+    var mElevationDiff = 0;
+    var mrealElevationGain = 0;
+    var mrealElevationLoss = 0;
+    var mrealElevationDiff = 0;
+        
 	//! it's good practice to always have an initialize, make sure to call your parent class here!
     function initialize() {
         CiqView.initialize();
+        var mApp = Application.getApp();
+        uPowerZones		 = mApp.getProperty("pPowerZones");        
     }
 
     //! Calculations we need to do every second even when the data field is not visible

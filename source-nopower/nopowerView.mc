@@ -65,6 +65,7 @@ class PowerView extends CiqView {
 		CiqView.onUpdate(dc);
 
  	    Garminfont_value = Ui.loadResource(Rez.Fonts.Garmin4);
+ 	    
 	   
 	}
 

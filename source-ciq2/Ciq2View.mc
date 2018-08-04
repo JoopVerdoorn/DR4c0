@@ -12,16 +12,7 @@ class CiqView extends DatarunpremiumView {
 	hidden var LapHeartrate					= 0;
 	hidden var LastLapHeartrate				= 0;
 	hidden var AverageHeartrate 			= 0; 
-    var mlastaltitude = 0;
-    hidden var aaltitude = 0;
-	hidden var mElevationGain = 0;
-    hidden var mElevationLoss = 0;
-    var mElevationDiff = 0;
-    var mrealElevationGain = 0;
-    var mrealElevationLoss = 0;
-    var mrealElevationDiff = 0;
     hidden var ID0;
-    hidden var extraMem = false;
 
 
     function initialize() {
@@ -183,7 +174,11 @@ class CiqView extends DatarunpremiumView {
             		dc.drawText(xh, yh, Garminfont_value_x_small, fTimerHours, Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
             		fTimer = (fieldvalue / 60 % 60).format("%02d") + ":" + fTimerSecs;  
         		}
-        			dc.drawText(xx, y, Garminfont_value_small, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);	
+        		if (VA3VA3M == true and fieldvalue < 3599) {
+        			dc.drawText(xx, y, Garminfont_value, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        		} else {
+        			dc.drawText(xx, y, Garminfont_value_small, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        		}	
         	}
         } else {
         	dc.drawText(x, y, Garminfont_value, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);

@@ -5,14 +5,11 @@
     	<font id="Garmin4" filename="fonts/Oswald83metriBigfontplus.fnt"/>
 	</fonts>
   <properties>
-    <property id="pAppversion" type="string">1.23</property>
+    <property id="pAppversion" type="string">1.30</property>
     <property id="pUpperLeftMetric" type="number">0</property>
-    <property id="pUpperRightMetric" type="number">4</property>
-    <property id="pMiddleLeftMetric" type="number">45</property>    
-    <property id="pMiddleMiddleMetric" type="number">8</property>
-    <property id="pMiddleRightMetric" type="number">50</property>    
-    <property id="pBottomLeftMetric" type="number">20</property>
-    <property id="pBottomRightMetric" type="number">22</property>
+    <property id="pUpperRightMetric" type="number">4</property>    
+    <property id="pBottomLeftMetric" type="number">8</property>
+    <property id="pBottomRightMetric" type="number">45</property>
     <property id="pETAfromLap" type="boolean">true</property>
     <property id="pRacedistance" type="number">42195</property>
     <property id="pRacetime" type="string">03:59:48</property>
@@ -38,8 +35,8 @@
     <!-- Beta name:
     <string id="AppName">Datarun premium with 4 metrics</string>
     -->
-    <string id="AppVersion">1.23</string>
-    <string id="lDummysetting4version">Version 1.23 of Datarun premium with 4 metrics (dummy setting)</string>
+    <string id="AppVersion">1.30</string>
+    <string id="lDummysetting4version">Version 1.30 of Datarun premium with 4 metrics (dummy setting)</string>
     <string id="lTimerDisplay">Timer field</string>
     <string id="lTimerTimer">Timer</string>
     <string id="lTimerLap">Current lap time</string>
@@ -256,7 +253,7 @@
         <listEntry value="13">@Strings.lETArequiredpace</listEntry>
         <listEntry value="14">@Strings.lETA</listEntry>
         <listEntry value="15">@Strings.lETAdeviation</listEntry>
-        
+
         <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
         <listEntry value="41">@Strings.lAveragesecSpeed</listEntry>
         <listEntry value="42">@Strings.lLapSpeed</listEntry>
@@ -268,19 +265,28 @@
         <listEntry value="48">@Strings.lLLHeartrate</listEntry>
         <listEntry value="49">@Strings.lAveraHeartrate</listEntry>
         <listEntry value="50">@Strings.lCadence</listEntry>
-
+        <listEntry value="51">@Strings.lAltitude</listEntry>
+        <listEntry value="52">@Strings.lElevationGain</listEntry>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        
         <listEntry value="20">@Strings.lSPower</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
         <listEntry value="23">@Strings.lLLPower</listEntry>
         <listEntry value="24">@Strings.lAPower</listEntry>
+        <listEntry value="31">@Strings.lCEFactor</listEntry>
         <listEntry value="25">@Strings.lLEIndex</listEntry>
         <listEntry value="26">@Strings.lLLEIndex</listEntry>
         <listEntry value="27">@Strings.lAEIndex</listEntry>
+        <listEntry value="32">@Strings.lAEFactor</listEntry>
         <listEntry value="28">@Strings.lLEFactor</listEntry>
         <listEntry value="29">@Strings.lLLEFactor</listEntry>
         <listEntry value="30">@Strings.lAEFactor</listEntry>
+        <listEntry value="36">@Strings.lCP2HRratio</listEntry>
+        <listEntry value="33">@Strings.lLP2HRratio</listEntry>
+        <listEntry value="34">@Strings.lLLP2HRratio</listEntry>
+        <listEntry value="35">@Strings.lAP2HRratio</listEntry>
 
 
       </settingConfig>
@@ -296,8 +302,8 @@
         <listEntry value="5">@Strings.lDistLap</listEntry>
         <listEntry value="6">@Strings.lDistLastLap</listEntry>
         <listEntry value="7">@Strings.lAvgLapD</listEntry>
-        <listEntry value="8">@Strings.lCurrentPace</listEntry>        
-        <listEntry value="16">@Strings.lPaceper3km</listEntry>
+        <listEntry value="8">@Strings.lCurrentPace</listEntry>
+        <listEntry value="16">@Strings.lPaceper3km</listEntry>        
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
@@ -306,7 +312,7 @@
         <listEntry value="13">@Strings.lETArequiredpace</listEntry>
         <listEntry value="14">@Strings.lETA</listEntry>
         <listEntry value="15">@Strings.lETAdeviation</listEntry>
-        
+
         <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
         <listEntry value="41">@Strings.lAveragesecSpeed</listEntry>
         <listEntry value="42">@Strings.lLapSpeed</listEntry>
@@ -318,19 +324,28 @@
         <listEntry value="48">@Strings.lLLHeartrate</listEntry>
         <listEntry value="49">@Strings.lAveraHeartrate</listEntry>
         <listEntry value="50">@Strings.lCadence</listEntry>
-
+        <listEntry value="51">@Strings.lAltitude</listEntry>
+        <listEntry value="52">@Strings.lElevationGain</listEntry>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        
         <listEntry value="20">@Strings.lSPower</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
         <listEntry value="23">@Strings.lLLPower</listEntry>
         <listEntry value="24">@Strings.lAPower</listEntry>
+        <listEntry value="31">@Strings.lCEFactor</listEntry>
         <listEntry value="25">@Strings.lLEIndex</listEntry>
         <listEntry value="26">@Strings.lLLEIndex</listEntry>
         <listEntry value="27">@Strings.lAEIndex</listEntry>
+        <listEntry value="32">@Strings.lAEFactor</listEntry>
         <listEntry value="28">@Strings.lLEFactor</listEntry>
         <listEntry value="29">@Strings.lLLEFactor</listEntry>
         <listEntry value="30">@Strings.lAEFactor</listEntry>
+        <listEntry value="36">@Strings.lCP2HRratio</listEntry>
+        <listEntry value="33">@Strings.lLP2HRratio</listEntry>
+        <listEntry value="34">@Strings.lLLP2HRratio</listEntry>
+        <listEntry value="35">@Strings.lAP2HRratio</listEntry>
 
 
       </settingConfig>
@@ -353,7 +368,7 @@
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
         <listEntry value="13">@Strings.lETArequiredpace</listEntry>
-		<listEntry value="14">@Strings.lETA</listEntry>
+        <listEntry value="14">@Strings.lETA</listEntry>
         <listEntry value="15">@Strings.lETAdeviation</listEntry>
 
         <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
@@ -367,19 +382,28 @@
         <listEntry value="48">@Strings.lLLHeartrate</listEntry>
         <listEntry value="49">@Strings.lAveraHeartrate</listEntry>
         <listEntry value="50">@Strings.lCadence</listEntry>
-
+        <listEntry value="51">@Strings.lAltitude</listEntry>
+        <listEntry value="52">@Strings.lElevationGain</listEntry>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        
         <listEntry value="20">@Strings.lSPower</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
         <listEntry value="23">@Strings.lLLPower</listEntry>
         <listEntry value="24">@Strings.lAPower</listEntry>
+        <listEntry value="31">@Strings.lCEFactor</listEntry>
         <listEntry value="25">@Strings.lLEIndex</listEntry>
         <listEntry value="26">@Strings.lLLEIndex</listEntry>
         <listEntry value="27">@Strings.lAEIndex</listEntry>
+        <listEntry value="32">@Strings.lAEFactor</listEntry>
         <listEntry value="28">@Strings.lLEFactor</listEntry>
         <listEntry value="29">@Strings.lLLEFactor</listEntry>
         <listEntry value="30">@Strings.lAEFactor</listEntry>
+        <listEntry value="36">@Strings.lCP2HRratio</listEntry>
+        <listEntry value="33">@Strings.lLP2HRratio</listEntry>
+        <listEntry value="34">@Strings.lLLP2HRratio</listEntry>
+        <listEntry value="35">@Strings.lAP2HRratio</listEntry>
         
        </settingConfig>
     </setting>
