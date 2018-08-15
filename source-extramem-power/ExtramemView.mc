@@ -217,7 +217,7 @@ class ExtramemView extends DatarunpremiumView {
         			fieldValue[i] = Math.round(mRacetime - mETA).toNumber() ;
 	        	}
     	    	if (fieldValue[i] < 0) {
-        			fieldValue[i] = - fieldValue;
+        			fieldValue[i] = - fieldValue[i];
         		}            	
 			}
 		}
