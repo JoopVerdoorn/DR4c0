@@ -28,7 +28,7 @@ class PowerView extends CiqView {
     var mrealElevationGain = 0;
     var mrealElevationLoss = 0;
     var mrealElevationDiff = 0;
-        
+	        
 	//! it's good practice to always have an initialize, make sure to call your parent class here!
     function initialize() {
         CiqView.initialize();
@@ -70,28 +70,16 @@ class PowerView extends CiqView {
         }             
 	}
 
-    //! Store last lap quantities and set lap markers
+    //! Store last lap quantities and set lap markers after a lap
     function onTimerLap() {
-        var info = Activity.getActivityInfo();
-        mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
-        mLastLapElapsedDistance 	= (info.elapsedDistance != null) ? info.elapsedDistance - mLastLapDistMarker : 0;
-        mLastLapDistMarker      	= (info.elapsedDistance != null) ? info.elapsedDistance : 0;
-        mLastLapTimeMarker      	= jTimertime;
-
-        mLastLapTimerTimeHR			= mHeartrateTime - mLastLapTimeHRMarker;
-        mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
-        mLastLapHeartrateMarker     = mElapsedHeartrate;
-        mLastLapTimeHRMarker        = mHeartrateTime;
-
-        mLastLapTimerTimePwr		= mPowerTime - mLastLapTimePwrMarker;
-        mLastLapElapsedPower  		= (info.currentPower != null) ? mElapsedPower - mLastLapPowerMarker : 0;
-        mLastLapPowerMarker         = mElapsedPower;
-        mLastLapTimePwrMarker       = mPowerTime;        
-
-        mLaps++;
-
+		Lapaction ();
 	}
 
+	//! Store last lap quantities and set lap markers after a step within a structured workout
+	function onWorkoutStepComplete() {
+		Lapaction ();
+	}
+	
     //! Current activity is ended
     function onTimerReset() {
         mPrevElapsedDistance        = 0;
@@ -107,7 +95,6 @@ class PowerView extends CiqView {
         mLastLapPowerMarker      	= 0;
         mLastLapElapsedPower     	= 0; 
         mLastLapTimerTimePwr     	= 0;
-        mT = 0;   
     }
 	
 	function onUpdate(dc) {
@@ -214,6 +201,26 @@ class PowerView extends CiqView {
 		//!einde invullen field metrics
 		}
 
+	}
+
+	function Lapaction () {
+        var info = Activity.getActivityInfo();
+        mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
+        mLastLapElapsedDistance 	= (info.elapsedDistance != null) ? info.elapsedDistance - mLastLapDistMarker : 0;
+        mLastLapDistMarker      	= (info.elapsedDistance != null) ? info.elapsedDistance : 0;
+        mLastLapTimeMarker      	= jTimertime;
+
+        mLastLapTimerTimeHR			= mHeartrateTime - mLastLapTimeHRMarker;
+        mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
+        mLastLapHeartrateMarker     = mElapsedHeartrate;
+        mLastLapTimeHRMarker        = mHeartrateTime;
+
+        mLastLapTimerTimePwr		= mPowerTime - mLastLapTimePwrMarker;
+        mLastLapElapsedPower  		= (info.currentPower != null) ? mElapsedPower - mLastLapPowerMarker : 0;
+        mLastLapPowerMarker         = mElapsedPower;
+        mLastLapTimePwrMarker       = mPowerTime;        
+
+        mLaps++;	
 	}
 
 }
