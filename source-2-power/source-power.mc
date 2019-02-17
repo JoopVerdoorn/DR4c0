@@ -1,6 +1,3 @@
-using Toybox.Activity as info; 
-
-//! inherit from the view that contains the commonlogic
 class PowerView extends CiqView { 
     hidden var mElapsedPower	   				= 0;
     hidden var mLastLapElapsedPower				= 0;
@@ -18,70 +15,17 @@ class PowerView extends CiqView {
 	var Power1 									= 0;
     var Power2 									= 0;
     var Power3 									= 0;
-	var vibrateseconds = 0;
-	hidden var mT = 0;     
+	var vibrateseconds = 0;  
+
     
-	//! it's good practice to always have an initialize, make sure to call your parent class here!
     function initialize() {
         CiqView.initialize();
+         var mApp = Application.getApp();
+         uRequiredPower		 = mApp.getProperty("pRequiredPower");
+         uWarningFreq		 = mApp.getProperty("pWarningFreq");
+         uAlertbeep			 = mApp.getProperty("pAlertbeep");       
     }
-
-    //! Calculations we need to do every second even when the data field is not visible
-    function compute(info) {
-        //! If enabled, switch the backlight on in order to make it stay on
-        if (uBacklight) {
-             Attention.backlight(true);
-        }
-
-		//! We only do some calculations if the timer is running
-		if (mTimerRunning) {  
-			jTimertime = jTimertime + 1;
-			//!Calculate lapheartrate
-            mHeartrateTime		 = (info.currentHeartRate != null) ? mHeartrateTime+1 : mHeartrateTime;				
-           	mElapsedHeartrate    = (info.currentHeartRate != null) ? mElapsedHeartrate + info.currentHeartRate : mElapsedHeartrate;
-
-            //!Calculate lappower
-            mPowerTime		 = (info.currentPower != null) ? mPowerTime+1 : mPowerTime;
-			mElapsedPower    = (info.currentPower != null) ? mElapsedPower + info.currentPower : mElapsedPower;              
-        }
-        
-        //! Calculate elevation differences and rounding altitude
-        if (info.altitude != null) {        
-          aaltitude = Math.round(info.altitude).toNumber();
-          mrealElevationDiff = aaltitude - mlastaltitude;
-          if (mrealElevationDiff > 0 ) {
-          	mrealElevationGain = mrealElevationDiff + mrealElevationGain;
-          } else {
-          	mrealElevationLoss =  mrealElevationLoss - mrealElevationDiff;
-          }  
-          mlastaltitude = aaltitude;
-          mElevationLoss = Math.round(mrealElevationLoss).toNumber();
-          mElevationGain = Math.round(mrealElevationGain).toNumber();
-        }             
-	}
-
-    //! Store last lap quantities and set lap markers
-    function onTimerLap() {
-        var info = Activity.getActivityInfo();
-        mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
-        mLastLapElapsedDistance 	= (info.elapsedDistance != null) ? info.elapsedDistance - mLastLapDistMarker : 0;
-        mLastLapDistMarker      	= (info.elapsedDistance != null) ? info.elapsedDistance : 0;
-        mLastLapTimeMarker      	= jTimertime;
-
-        mLastLapTimerTimeHR			= mHeartrateTime - mLastLapTimeHRMarker;
-        mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
-        mLastLapHeartrateMarker     = mElapsedHeartrate;
-        mLastLapTimeHRMarker        = mHeartrateTime;
-
-        mLastLapTimerTimePwr		= mPowerTime - mLastLapTimePwrMarker;
-        mLastLapElapsedPower  		= (info.currentPower != null) ? mElapsedPower - mLastLapPowerMarker : 0;
-        mLastLapPowerMarker         = mElapsedPower;
-        mLastLapTimePwrMarker       = mPowerTime;        
-
-        mLaps++;
-
-	}
-
+	
     //! Current activity is ended
     function onTimerReset() {
         mPrevElapsedDistance        = 0;
@@ -96,8 +40,7 @@ class PowerView extends CiqView {
         mLastLapTimerTimeHR     	= 0;   
         mLastLapPowerMarker      	= 0;
         mLastLapElapsedPower     	= 0; 
-        mLastLapTimerTimePwr     	= 0;
-        mT = 0;   
+        mLastLapTimerTimePwr     	= 0;  
     }
 	
 	function onUpdate(dc) {
@@ -106,25 +49,14 @@ class PowerView extends CiqView {
 
         //! Calculate power-lap time and convert timers from milliseconds to seconds
 		var info = Activity.getActivityInfo();
-        mLapTimerTimePwr = jTimertime - mLastLapTimePwrMarker;
+        mLapTimerTimePwr = mPowerTime - mLastLapTimePwrMarker;
 
 		//!Calculate powermetrics
 		var mLapElapsedPower = mElapsedPower - mLastLapPowerMarker;
         
 		AveragePower = Math.round((mPowerTime != 0) ? mElapsedPower/mPowerTime : 0);  
-
-		if (mLapTimerTimePwr == 1 ) {  
-			LapPower = (info.currentPower != null) ? info.currentPower : 0;
-			mLapElapsedPower = LapPower;
-		} else if (mLapTimerTimePwr == 2 ) {
-			LapPower = (info.currentPower != null) ? info.currentPower : 0;
-			mLapElapsedPower = 2*LapPower;		
-		} else {   
-			LapPower = (mLapTimerTimePwr != 0) ? Math.round(mLapElapsedPower/mLapTimerTimePwr) : 0; 	
-		}
-		LapPower = (mLaps == 1) ? AveragePower : LapPower; 
-		LastLapPower			= (mLastLapTimerTimePwr != 0) ? Math.round(mLastLapElapsedPower/mLastLapTimerTimePwr) : 0;
-
+		LapPower = (mLapTimerTimePwr != 0) ? Math.round(mLapElapsedPower/mLapTimerTimePwr) : 0; 	
+		LastLapPower = (mLastLapTimerTimePwr != 0) ? Math.round(mLastLapElapsedPower/mLastLapTimerTimePwr) : 0;
 
 		//!Calculate average power
         var AveragePower3sec  	 			= 0;
@@ -169,7 +101,7 @@ class PowerView extends CiqView {
     				if (vibrateseconds == uWarningFreq) {
     					Toybox.Attention.vibrate(vibrateData);
     					if (uAlertbeep == true) {
-    						Attention.playTone(Attention.TONE_KEY);
+    						Attention.playTone(Attention.TONE_LOW_BATTERY);
     					}
     					vibrateseconds = 0;
     				}
@@ -187,9 +119,8 @@ class PowerView extends CiqView {
 			 }
 			 
 		}		
-
 		var i = 0; 
-	    for (i = 1; i < 8; ++i) {	    
+	    for (i = 1; i < 5; ++i) {	    
         	if (metric[i] == 20) {
             	fieldValue[i] = (info.currentPower != null) ? info.currentPower : 0;
             	fieldLabel[i] = "Power";
