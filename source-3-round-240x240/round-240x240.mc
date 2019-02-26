@@ -58,7 +58,7 @@ class DeviceView extends PowerView {
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,153,072,012,145,073,199");
 	       	} else if ( i == 4 ) {	//!lower row, right
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"173,153,182,123,167,167,199");
-	       	}     	
+	       	}    	       	 	
 		}
 
 		//! Bottom battery indicator

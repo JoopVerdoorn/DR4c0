@@ -109,10 +109,10 @@ class DatarunpremiumView extends Ui.DataField {
          DataField.initialize();
 
          var mApp = Application.getApp();
-         metric[1]    	= mApp.getProperty("pUpperLeftMetric");
-         metric[2]   	= mApp.getProperty("pUpperRightMetric");
-         metric[3]   	= mApp.getProperty("pBottomLeftMetric");
-         metric[4]  	= mApp.getProperty("pBottomRightMetric");
+         metric[1]	    	 = mApp.getProperty("pUpperLeftMetric");
+         metric[2]  	 	 = mApp.getProperty("pUpperRightMetric");
+         metric[3]   		 = mApp.getProperty("pBottomLeftMetric");
+         metric[4]		  	 = mApp.getProperty("pBottomRightMetric");
          uRoundedPace        = mApp.getProperty("pRoundedPace");
          uRoundedPace        = mApp.getProperty("pRoundedPace");
          uBacklight          = mApp.getProperty("pBacklight");
@@ -124,7 +124,7 @@ class DatarunpremiumView extends Ui.DataField {
          uRacetime			 = mApp.getProperty("pRacetime");
          appversion 		 = mApp.getProperty("pAppversion");
          var uHrZones = UserProfile.getHeartRateZones(UserProfile.getCurrentSport());
-	 
+          
         if (System.getDeviceSettings().paceUnits == System.UNIT_STATUTE) {
             unitP = 1609.344;
         }
