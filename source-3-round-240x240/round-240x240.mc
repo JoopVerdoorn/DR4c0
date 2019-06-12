@@ -1,7 +1,10 @@
 using Toybox.Graphics as Gfx;
+using Toybox.System as Sys;
 
 //! inherit from the view that contains the commonlogic
 class DeviceView extends PowerView {
+	var myTime;
+	var strTime;
 
 	//! it's good practice to always have an initialize, make sure to call your parent class here!
     function initialize() {
@@ -43,9 +46,9 @@ class DeviceView extends PowerView {
         dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 
 		//! Show number of laps or clock with current time in top
+		myTime = Toybox.System.getClockTime(); 
+	    strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
 		if (uMilClockAltern == 0) {		
-			var myTime = Toybox.System.getClockTime(); 
-	    	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
 			dc.drawText(120, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
 		}
 
@@ -60,8 +63,17 @@ class DeviceView extends PowerView {
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"173,153,182,123,167,167,199");
 	       	}    	       	 	
 		}
-
+		
+		if (jTimertime == 0) {
+	    	if (ID0 != 3624 and ID0 != 3588 and ID0 != 3762 and ID0 != 3761 and ID0 != 3757 and ID0 != 3758 and ID0 != 3759) {
+		    	dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+				dc.drawText(120, 102, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+		    }
+		}
+		
 		//! Bottom battery indicator
+	 	var stats = Sys.getSystemStats();
+		var pwr = stats.battery;
 		var mBattcolor = (pwr > 15) ? mColourFont : Graphics.COLOR_RED;
 		dc.setColor(mBattcolor, Graphics.COLOR_TRANSPARENT);
 		dc.fillRectangle(92, 219, 54, 15);
@@ -74,7 +86,7 @@ class DeviceView extends PowerView {
 		var Startstatuspwrbr = 94 + pwr*0.5  ;
 		var Endstatuspwrbr = 50 - pwr*0.5 ;
 		dc.fillRectangle(Startstatuspwrbr, 221, Endstatuspwrbr, 11);	
-
+		
 	   } else {
 	   //! Display demo screen
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);

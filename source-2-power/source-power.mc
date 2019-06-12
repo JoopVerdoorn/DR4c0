@@ -46,6 +46,7 @@ class PowerView extends CiqView {
 	function onUpdate(dc) {
 		//! call the parent function in order to execute the logic of the parent
 		CiqView.onUpdate(dc);
+		uMilClockAltern=0;
 
         //! Calculate power-lap time and convert timers from milliseconds to seconds
 		var info = Activity.getActivityInfo();
@@ -92,7 +93,8 @@ class PowerView extends CiqView {
 		
 		//!var DisplayPower  = (info.currentPower != null) ? info.currentPower : 0;
 		PowerWarning = 0;
-		if (AveragePower3sec>mPowerWarningupper or AveragePower3sec<mPowerWarningunder) {
+		if (jTimertime != 0) {
+		  if (AveragePower3sec>mPowerWarningupper or AveragePower3sec<mPowerWarningunder) {
 			 //!Toybox.Attention.playTone(TONE_LOUD_BEEP);		 
 			 if (Toybox.Attention has :vibrate && uNoAlerts == false) {
 			 	vibrateseconds = vibrateseconds + 1;	 		  			
@@ -117,7 +119,7 @@ class PowerView extends CiqView {
     				}
     			} 
 			 }
-			 
+		  }	 
 		}		
 		var i = 0; 
 	    for (i = 1; i < 5; ++i) {	    
