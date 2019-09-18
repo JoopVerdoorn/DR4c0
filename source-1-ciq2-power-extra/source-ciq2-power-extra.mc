@@ -38,7 +38,18 @@ class CiqView extends ExtramemView {
 				rolavPowmaxsecs = (rolavPowmaxsecs < 30) ? 30 : rolavPowmaxsecs;
 			}
 		}	
-		Garminfont = (ID0 == 3624 or ID0 == 3588 or ID0 == 3762 or ID0 == 3761 or ID0 == 3757 or ID0 == 3758 or ID0 == 3759) ? Ui.loadResource(Rez.Fonts.Garmin1) : Graphics.FONT_NUMBER_HOT;		
+		
+		
+		if (ID0 == 3588 or ID0 == 3832 or ID0 == 3624 or ID0 == 3952 or ID0 == 3762 or ID0 == 3962 or ID0 == 3761 or ID0 == 3961 or ID0 == 3757 or ID0 == 3931 or ID0 == 3758 or ID0 == 3932 or ID0 == 3759 or ID0 == 3959 or ID0 == 3798 or ID0 == 4023 or ID0 == 3799 or ID0 == 4024) {
+			Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
+			Garminfontklein = Ui.loadResource(Rez.Fonts.Garmin2);		
+		} else if (ID0 == 3801 or ID0 == 4026 ) {
+			Garminfont = Ui.loadResource(Rez.Fonts.Garmin3);
+			Garminfontklein = Ui.loadResource(Rez.Fonts.Garmin5);
+		} else if (ID0 == 3802 or ID0 == 4027 ) {
+			Garminfont = Ui.loadResource(Rez.Fonts.Garmin4);
+			Garminfontklein = Ui.loadResource(Rez.Fonts.Garmin6);
+		}			
     }
 
     //! Calculations we need to do every second even when the data field is not visible
