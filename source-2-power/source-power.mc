@@ -58,7 +58,7 @@ class PowerView extends CiqView {
 		LapPower = (mLapTimerTimePwr != 0) ? Math.round(mLapElapsedPower/mLapTimerTimePwr) : 0; 	
 		LastLapPower = (mLastLapTimerTimePwr != 0) ? Math.round(mLastLapElapsedPower/mLastLapTimerTimePwr) : 0;
 
-		//!Calculate average power
+		//!Calculate 3 sec averaged power
         var AveragePower3sec  	 			= 0;
         var currentPowertest				= 0;
 		if (info.currentSpeed != null && info.currentPower != null) {
