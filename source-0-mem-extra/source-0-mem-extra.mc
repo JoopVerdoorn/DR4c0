@@ -366,11 +366,47 @@ class ExtramemView extends DatarunpremiumView {
         	}  else if (uClockFieldMetric == 67) {
            		CFMValue = (unitD == 1609.344) ? AverageVertspeedinmper5sec*3.2808 : AverageVertspeedinmper5sec;
             	CFMLabel = "V speed";
-            	CFMFormat = "2decimal";  
-            } else if (metric[i] == 87) {
-    	        fieldValue[i] = (info.calories != null) ? info.calories : 0;
-        	    fieldLabel[i] = "kCal";
-            	fieldFormat[i] = "0decimal";
+            	CFMFormat = "2decimal"; 
+            } else if (metric[i] == 81) {
+	        	if (Toybox.Activity.Info has :distanceToNextPoint) {
+    	        	CFMValue = (info.distanceToNextPoint != null) ? info.distanceToNextPoint / unitD : 0;
+    	        }
+        	    CFMLabel = "DistNext";
+            	CFMFormat = "2decimal";
+			} else if (metric[i] == 82) {
+    	        if (Toybox.Activity.Info has :distanceToDestination) {
+    	        	CFMValue = (info.distanceToDestination != null) ? info.distanceToNextPoint / unitD : 0;
+    	        }
+        	    CFMLabel = "DistDest";
+            	CFMFormat = "2decimal";
+           	} else if (metric[i] == 83) {
+            	CFMValue = (maxHR != 0) ? currentHR*100/maxHR : 0;
+            	CFMLabel = "%MaxHR";
+            	CFMFormat = "0decimal";   
+			} else if (metric[i] == 84) {
+    	        CFMValue = (maxHR != 0) ? LapHeartrate*100/maxHR : 0;
+        	    CFMLabel = "L %MaxHR";
+            	CFMFormat = "0decimal";
+			} else if (metric[i] == 85) {
+        	    CFMValue = (maxHR != 0) ? LastLapHeartrate*100/maxHR : 0;
+            	CFMLabel = "LL %MaxHR";
+            	CFMFormat = "0decimal";
+	        } else if (metric[i] == 86) {
+    	        CFMValue = (maxHR != 0) ? AverageHeartrate*100/maxHR : 0;
+        	    CFMLabel = "A %MaxHR";
+            	CFMFormat = "0decimal";  
+	        } else if (metric[i] == 87) {
+    	        CFMValue = (info.calories != null) ? info.calories : 0;
+        	    CFMLabel = "kCal";
+            	CFMFormat = "0decimal"; 
+			} else if (metric[i] == 88) {   
+            	if (mLastLapSpeed == null or info.currentSpeed==0) {
+            		CFMValue = 0;
+            	} else {
+            		CFMValue = (mLastLapSpeed > 0.001) ? 100/mLastLapSpeed : 0;
+            	}
+            	CFMLabel = "LL s/100m";
+        	    CFMFormat = "1decimal";
 			}
 			 
 
@@ -386,7 +422,7 @@ class ExtramemView extends DatarunpremiumView {
 
 		//! Display colored labels on screen	
 		if (ID0 == 3801 or ID0 == 4026 ) {  //! Fenix 6 pro labels
-			for (var i = 1; i < 8; ++i) {
+			for (var i = 1; i < 5; ++i) {
 			   	if ( i == 1 ) {			//!upper row, left    	
 	    			if (disablelabel1 == false) {
 	    				Coloring(dc,i,fieldValue[i],"022,031,108,027");
@@ -406,7 +442,7 @@ class ExtramemView extends DatarunpremiumView {
 		    	}       	
 			}		
 		} else if (ID0 == 3802 or ID0 == 4027 ) {     //! Fenix 6x pro labels
-			for (var i = 1; i < 8; ++i) {
+			for (var i = 1; i < 5; ++i) {
 			   	if ( i == 1 ) {			//!upper row, left    	
 	    			if (disablelabel1 == false) {
 	    				Coloring(dc,i,fieldValue[i],"023,034,117,029");
