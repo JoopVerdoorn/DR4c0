@@ -19,7 +19,6 @@
     <property id="pAlertbeep" type="boolean">false</property>
     <property id="pETAfromLap" type="boolean">true</property>
     <property id="pLapPwr4alerts" type="boolean">false</property>
-    <property id="pCCnumber" type="number">9999999</property>
   </properties>
 
 	
@@ -68,8 +67,7 @@
     <string id="lShowDemo">Show demo view for ID's and check license</string>
     <string id="lBacklight">Force backlight on, regardless of device settings</string>
     <string id="MyNumberTitle">Enter license key</string>
-    <string id="MyNumberError">Not valid, only numbers allowed!</string>
-    <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string> 
+    <string id="MyNumberError">Not valid, only numbers allowed!</string> 
     <string id="lRacedistanceTitle">Enter race distance in meters or thousands of a mile (imperial/statute watch settings) for estimated finish time</string>
     <string id="lRacedistanceError">Not valid, only numbers allowed!</string>
     <string id="lRacetimeTitle">Enter desired finish time(format like 03:59:00 required!)</string>
@@ -96,7 +94,6 @@
     <string id="lAPower">Average running power</string>
 	<string id="lLPower">Current lap running power</string>
 	<string id="lLLPower">Last lap running power</string>
-	<string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
  </strings>
 
   <settings>
@@ -112,9 +109,6 @@
     <setting propertyKey="@Properties.myNumber" title="@Strings.MyNumberTitle">
         <settingConfig type="numeric" errorMessage="@Strings.MyNumberError" />
     </setting>  
-    <setting propertyKey="@Properties.pCCnumber" title="@Strings.lCCnumber">
-        <settingConfig type="numeric" errorMessage="@Strings.MyNumberError" />
-    </setting>
     <setting propertyKey="@Properties.pRoundedPace" title="@Strings.lRoundedPace">
       <settingConfig type="boolean" required="true" />
     </setting>

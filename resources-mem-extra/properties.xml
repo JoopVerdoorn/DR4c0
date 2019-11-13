@@ -26,7 +26,6 @@
     <property id="pdisablelabel2" type="boolean">false</property>
     <property id="pdisablelabel3" type="boolean">false</property>
     <property id="pdisablelabel4" type="boolean">false</property>
-    <property id="pCCnumber" type="number">9999999</property>
   </properties>
 
 	
@@ -76,8 +75,7 @@
     <string id="lShowDemo">Show demo view for ID's and check license</string>
     <string id="lBacklight">Force backlight on, regardless of device settings</string>
     <string id="MyNumberTitle">Enter license key</string>
-    <string id="MyNumberError">Not valid, only numbers allowed!</string>
-    <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string> 
+    <string id="MyNumberError">Not valid, only numbers allowed!</string> 
     <string id="lRacedistanceTitle">Enter race distance in meters or thousands of a mile (imperial/statute watch settings) for estimated finish time</string>
     <string id="lRacedistanceError">Not valid, only numbers allowed!</string>
     <string id="lRacetimeTitle">Enter desired finish time for estimated deviation of finish time (format like 03:59:00 required!)</string>
@@ -133,7 +131,6 @@
     <string id="lApercMaxHR">Average HR in percentage of MaxHR</string>	
     <string id="lkCalories">Used kilocalories</string>
     <string id="lLLPaceper100m">Pace of last lap in seconds per 100 meter (for track running)</string>
-    <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
  </strings>
 
   <settings>
@@ -147,9 +144,6 @@
       <settingConfig type="boolean" required="true" />
     </setting>
     <setting propertyKey="@Properties.myNumber" title="@Strings.MyNumberTitle">
-        <settingConfig type="numeric" errorMessage="@Strings.MyNumberError" />
-    </setting>
-    <setting propertyKey="@Properties.pCCnumber" title="@Strings.lCCnumber">
         <settingConfig type="numeric" errorMessage="@Strings.MyNumberError" />
     </setting>
     <setting propertyKey="@Properties.pRoundedPace" title="@Strings.lRoundedPace">
