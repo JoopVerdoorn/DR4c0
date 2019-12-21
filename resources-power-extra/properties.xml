@@ -8,7 +8,7 @@
     	<font id="Garmin6" filename="fonts/Roadway62-alleencijfers.fnt" antialias="true"/>    	
 	</fonts>
   <properties>
-    <property id="pAppversion" type="string">2.20g</property>
+    <property id="pAppversion" type="string">2.21</property>
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>   
     <property id="pBottomLeftMetric" type="number">20</property>
@@ -40,17 +40,18 @@
     <property id="pdisablelabel2" type="boolean">false</property>
     <property id="pdisablelabel3" type="boolean">false</property>
     <property id="pdisablelabel4" type="boolean">false</property>
+    <property id="pGarminColors" type="boolean">false</property>
   </properties>
 
 	
   <strings>
     <!-- Release name: -->
-    <string id="AppName">Datarun premium with 4 metrics, copy 2</string>
+    <string id="AppName">Datarun premium with 4 metrics, main version</string>
     <!-- Beta name:
-    <string id="AppName">Datarun premium with 4 metrics, copy 2</string>
+    <string id="AppName">Datarun premium with 4 metrics, main version</string>
     -->
-    <string id="AppVersion">2.20g</string>
-    <string id="lDummysetting4version">Version 2.20g of Datarun premium with 4 metrics, main version (dummy setting)</string>
+    <string id="AppVersion">2.21</string>
+    <string id="lDummysetting4version">Version 2.21 of Datarun premium with 4 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
@@ -157,8 +158,8 @@
     <string id="lPowerZones">Power zones, a format required like 184:Z1:227:Z2:255:Z3:284:Z4:326:Z5:369</string>
     <string id="l10Powerzones">Use 10 power zones  instead of 5</string>
     <string id="lPPPowerZones">Power zones for 10 zone system, a format required like Power zones, a format required like 180:Z1:210:Z2:240:Z3:270:Z4:300:Z5:330:Z6:360:Z7:390:Z8:420:Z9:450:Z10:480</string>
-	<string id="lCEFactor">Current efficiency Index</string>
-	<string id="lCEIndex">Current lap efficiency factor </string>
+	<string id="lCEFactor">Current efficiency factor</string>
+	<string id="lCEIndex">Current efficiency index </string>
     <string id="lCP2HRratio">Current power to heartrate ratio</string>
     <string id="lLP2HRratio">Lap power to heartrate ratio</string>
     <string id="lLLP2HRratio">Last lap power to heartrate ratio</string>
@@ -184,6 +185,8 @@
     <string id="lApercMaxHR">Average HR in percentage of MaxHR</string>	
     <string id="lkCalories">Used kilocalories</string>
     <string id="lLLPaceper100m">Pace of last lap in seconds per 100 meter (for track running)</string>
+    <string id="lTemp">Current temperature</string>
+	<string id="lGarminColors">Use Garmin color scheme for label colors (not applicable for Palladino 10 powerzones)</string>
    
  </strings>
 
@@ -356,6 +359,7 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
       </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pUpperRightMetric" title="@Strings.lUpperRightMetric">
@@ -458,7 +462,9 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>      </settingConfig>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
+      </settingConfig>
     </setting>
 
     <setting propertyKey="@Properties.pBottomLeftMetric" title="@Strings.lBottomLeftMetric">
@@ -561,7 +567,9 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>      </settingConfig>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
+      </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pBottomRightMetric" title="@Strings.lBottomRightMetric">
       <settingConfig type="list" required="true">
@@ -663,7 +671,9 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>       </settingConfig>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
+       </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pClockFieldMetric" title="@Strings.lClockFieldMetric">
       <settingConfig type="list" required="true">
@@ -714,16 +724,19 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
         
         <listEntry value="997">@Strings.lPIMenu</listEntry>
-        <listEntry value="31">@Strings.lCEFactor</listEntry>
-        <listEntry value="32">@Strings.lAEFactor</listEntry>
+        <listEntry value="32">@Strings.lCEFactor</listEntry>
         <listEntry value="28">@Strings.lLEFactor</listEntry>
         <listEntry value="29">@Strings.lLLEFactor</listEntry>
         <listEntry value="30">@Strings.lAEFactor</listEntry>
         <listEntry value="54">@Strings.lTEffect</listEntry>  
         <listEntry value="87">@Strings.lkCalories</listEntry>
       </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.pGarminColors" title="@Strings.lGarminColors">
+      <settingConfig type="boolean" required="true" />
     </setting>
     <setting propertyKey="@Properties.pdisablelabel1" title="@Strings.ldisablelabel1">
       <settingConfig type="boolean" required="true" />

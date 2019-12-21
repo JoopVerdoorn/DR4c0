@@ -113,8 +113,7 @@ class PowerView extends CiqView {
     				}
     			} else if (runalertPower<mPowerWarningunder){
     				PowerWarning = 2;
-    				if (vibrateseconds == uWarningFreq) {
-    					
+    				if (vibrateseconds == uWarningFreq) {			
     						if (uAlertbeep == true) {
     							Attention.playTone(Attention.TONE_ALERT_LO);
     						}
