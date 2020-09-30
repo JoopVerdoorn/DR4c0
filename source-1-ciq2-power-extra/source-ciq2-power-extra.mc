@@ -215,7 +215,7 @@ class CiqView extends ExtramemView {
 					PwrCorrFactor = 1- (B24 - B25) - (B39-B38)/100;
 				}
 			}
-			
+		
             //!Calculate lappower
             mPowerTime		 = (info.currentPower != null) ? mPowerTime+1 : mPowerTime; 		
             if (uOnlyPwrCorrFactor == false) {
@@ -605,7 +605,7 @@ class CiqView extends ExtramemView {
         	Temp = (fieldvalue != 0 ) ? (unitP/fieldvalue).toLong() : 0;
         	fieldvalue = (Temp / 60).format("%0d") + ":" + Math.round(Temp % 60).format("%02d");
         } else if ( fieldformat.equals("power" ) == true ) {   
-        	fieldvalue = Math.round(fieldvalue).toNumber();
+        	fieldvalue = Math.round(fieldvalue).toNumber();        	
         	PowerWarning = (setPowerWarning == 1) ? 1 : PowerWarning;    	
         	PowerWarning = (setPowerWarning == 2) ? 2 : PowerWarning;
         	if (PowerWarning == 1) { 
