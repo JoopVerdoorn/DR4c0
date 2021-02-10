@@ -30,7 +30,6 @@ class PowerView extends CiqView {
          uWarningFreq		 = mApp.getProperty("pWarningFreq");
          uAlertbeep			 = mApp.getProperty("pAlertbeep"); 
          uLapPwr4alerts      = mApp.getProperty("pLapPwr4alerts"); 
-         uLapPwr4alerts      = mApp.getProperty("pLapPwr4alerts");  
          overruleWourkout	 = mApp.getProperty("poverruleWourkout");     
     }
 	
@@ -89,7 +88,7 @@ class PowerView extends CiqView {
 		//! Alert when out of predefined powerzone
 		//!Calculate power metrics
         mPowerWarningunder = uRequiredPower.substring(0, 3);
-        var mPowerWarningupper = uRequiredPower.substring(4, 7);
+        mPowerWarningupper = uRequiredPower.substring(4, 7);
         mPowerWarningupper = uRequiredPower.substring(4, 7);
         mPowerWarningunder = mPowerWarningunder.toNumber();
         mPowerWarningunder = mPowerWarningunder.toNumber();

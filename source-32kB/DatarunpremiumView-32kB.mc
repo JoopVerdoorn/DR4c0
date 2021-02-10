@@ -125,6 +125,7 @@ class DatarunpremiumView extends Ui.DataField {
          appversion 		 = mApp.getProperty("pAppversion");
          uETAfromLap		 = mApp.getProperty("pETAfromLap");
          var uHrZones = UserProfile.getHeartRateZones(UserProfile.getCurrentSport());
+         var uCCnumber	     = mApp.getProperty("pCCnumber");
 
      
 
@@ -152,7 +153,7 @@ class DatarunpremiumView extends Ui.DataField {
 		CCode = CCode*hashfunction((uHrZones[2]*uHrZones[4]+uHrZones[1]+uHrZones[3]).toString())-4943;
         CCode = (CCode > 0) ? CCode : -CCode; 
         CCode = CCode % 505344 + 51789; 
-        licenseOK = (umyNumber == mtest) ? true : false;
+        licenseOK = (umyNumber == mtest or CCode == uCCnumber) ? true : false;
     }
 
     //! Timer transitions from stopped to running state
@@ -225,9 +226,6 @@ class DatarunpremiumView extends Ui.DataField {
 
 		//! Calculate average speed over 5 sec
         CurrentSpeedinmpersec = (info.currentSpeed != null) ? info.currentSpeed : 0;
-        if (info.currentSpeed != null) {
-        	CurrentSpeedinmpersec = info.currentSpeed; 
-        }
         if (CurrentSpeedinmpersec > 0) {
         		Pace5 								= Pace4;
         		Pace4 								= Pace3;
