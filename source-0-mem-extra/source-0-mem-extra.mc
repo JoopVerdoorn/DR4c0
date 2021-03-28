@@ -52,6 +52,7 @@ class ExtramemView extends DatarunpremiumView {
 	var Diff2 								= 0;
 	var utempcalibration					= 0;
 	var hrRest;
+	var HelpVar;
 	
     function initialize() {
         DatarunpremiumView.initialize();
@@ -498,7 +499,26 @@ class ExtramemView extends DatarunpremiumView {
     	        CFMValue = "Avg Cad";
         	    CFMValue = "0decimal";
 			}
-			 
+
+        //! Determine HR-zone for clockfield
+        if (uClockFieldMetric==46) {
+			if (CFMValue >= uHrZones[5]) {
+				HelpVar = 6;			
+			} else if (CFMValue >= uHrZones[4]) {    	
+				HelpVar = Math.round(10*(5+(CFMValue-uHrZones[4]+0.00001)/(uHrZones[5]-uHrZones[4]+0.00001)))/10;			
+			} else if (CFMValue >= uHrZones[3]) {
+				HelpVar = Math.round(10*(4+(CFMValue-uHrZones[3]+0.00001)/(uHrZones[4]-uHrZones[3]+0.00001)))/10;			
+			} else if (CFMValue >= uHrZones[2]) {
+				HelpVar = Math.round(10*(3+(CFMValue-uHrZones[2]+0.00001)/(uHrZones[3]-uHrZones[2]+0.00001)))/10;
+			} else if (CFMValue >= uHrZones[1]) {
+				HelpVar = Math.round(10*(2+(CFMValue-uHrZones[1]+0.00001)/(uHrZones[2]-uHrZones[1]+0.00001)))/10;
+			} else if (CFMValue >= uHrZones[0]) {			
+				HelpVar = Math.round(10*(1+(CFMValue-uHrZones[0]+0.00001)/(uHrZones[1]-uHrZones[0]+0.00001)))/10;
+			} else {
+    	        HelpVar = Math.round(10*((CFMValue-hrRest+0.00001)/(uHrZones[0]-0.00001)))/10;
+			}		
+			CFMValue = HelpVar;        
+        }			 
 
 		//! Conditions for showing the demoscreen       
         if (uShowDemo == false) {
@@ -605,9 +625,7 @@ class ExtramemView extends DatarunpremiumView {
 			}
 		} else if (uMilClockAltern == 3) {		//! Display of metric in Clock field
 			var originalFontcolor = mColourFont;
-			var Temp;
-			CFMValue = (uClockFieldMetric==38) ? Powerzone : CFMValue; 
-			CFMValue = (uClockFieldMetric==46) ? HRzone : CFMValue;
+			var Temp; 
 			if ( CFMFormat.equals("0decimal" ) == true ) {
         		Temp = Math.round(CFMValue);
         		CFMValue = Temp.format("%.0f");
@@ -668,7 +686,8 @@ class ExtramemView extends DatarunpremiumView {
         var mZ4under = 0;
         var mZ5under = 0;
         var mZ5upper = 0; 
-        var avgSpeed = (info.averageSpeed != null) ? info.averageSpeed : 0;
+        var avgSpeed = (info.averageSpeed != null) ? info.averageSpeed : 0;       
+        
 		if (metric[counter] == 45 or metric[counter] == 46 or metric[counter] == 47 or metric[counter] == 48 or metric[counter] == 49) {  //! HR=45, HR-zone=46, Lap HR=47, L-1 HR=48, Avg HR=49
             mZ1under = uHrZones[0];
             mZ2under = uHrZones[1];
