@@ -292,99 +292,99 @@ class ExtramemView extends DatarunpremiumView {
 		//!Choice for metric in Clockfield
         	if (uClockFieldMetric == 4) {
     	        CFMValue = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
-        	    CFMFormat = "2decimal";   
+            	CFMFormat = "2decimal";   
 	        } else if (uClockFieldMetric == 5) {
     	        CFMValue = mLapElapsedDistance/unitD;
-        	    CFMFormat = "2decimal";
+            	CFMFormat = "2decimal";
 			} else if (uClockFieldMetric == 6) {
     	        CFMValue = mLastLapElapsedDistance/unitD;
-        	    CFMFormat = "2decimal";
+            	CFMFormat = "2decimal";
 			} else if (uClockFieldMetric == 7) {
 	            CFMValue = (info.elapsedDistance != null) ? info.elapsedDistance / (mLaps * unitD) : 0;
-    	        CFMFormat = "2decimal";
+        	    CFMFormat = "2decimal";
 	        } else if (uClockFieldMetric == 8) {
    	        	CFMValue = CurrentSpeedinmpersec;
-        	    CFMFormat = "pace";   
+            	CFMFormat = "pace";   
 	        } else if (uClockFieldMetric == 9) {
     	        CFMValue = Averagespeedinmper5sec; 
-        	    CFMFormat = "pace";
+            	CFMFormat = "pace";
 	        } else if (uClockFieldMetric == 16) {
     	        CFMValue = Averagespeedinmper3sec; 
-        	    CFMFormat = "pace";
+            	CFMFormat = "pace";
 	        } else if (uClockFieldMetric == 10) {
     	        CFMValue = mLapSpeed;
-        	    CFMFormat = "pace";
+            	CFMFormat = "pace";
 			} else if (uClockFieldMetric == 11) {
     	        CFMValue = mLastLapSpeed;
-        	    CFMFormat = "pace";
+            	CFMFormat = "pace";
 			} else if (uClockFieldMetric == 12) {
 	            CFMValue = (info.averageSpeed != null) ? info.averageSpeed : 0;
-    	        CFMFormat = "pace";
+        	    CFMFormat = "pace";
             } else if (uClockFieldMetric == 13) {
         		CFMFormat = "pace";
         		if (info.elapsedDistance != null and mRacetime != jTimertime and mRacetime > jTimertime) {
         			CFMValue = (uRacedistance - info.elapsedDistance) / (mRacetime - info.timerTime/1000);
         		} 
 	        } else if (uClockFieldMetric == 40) {
-    	        CFMLabel = "Speed";
+    	        CFMValue = (info.currentSpeed != null) ? 3.6*info.currentSpeed*1000/unitP : 0;
             	CFMFormat = "1decimal";   
 	        } else if (uClockFieldMetric == 41) {
-    	        CFMLabel = "Spd 5s";
+    	        CFMValue = (info.currentSpeed != null) ? 3.6*((Pace1+Pace2+Pace3+Pace4+Pace5)/5)*1000/unitP : 0;
             	CFMFormat = "1decimal";
 	        } else if (uClockFieldMetric == 42) {
-    	        CFMLabel = "L Spd";
+    	        CFMValue = (mLapSpeed != null) ? 3.6*mLapSpeed*1000/unitP  : 0;
             	CFMFormat = "1decimal";
 			} else if (uClockFieldMetric == 43) {
-    	        CFMLabel = "LL Spd";
+    	        CFMValue = (mLastLapSpeed != null) ? 3.6*mLastLapSpeed*1000/unitP : 0;
             	CFMFormat = "1decimal";
 			} else if (uClockFieldMetric == 44) {
-	            CFMLabel = "Avg Spd";
+	            CFMValue = (info.averageSpeed != null) ? 3.6*info.averageSpeed*1000/unitP : 0;
         	    CFMFormat = "1decimal";
 			} else if (uClockFieldMetric == 46) {
-	            CFMLabel = "HR zone";
+	            CFMValue = (info.currentHeartRate != null) ? info.currentHeartRate : 0;
         	    CFMFormat = "1decimal";   
 			} else if (uClockFieldMetric == 47) {
-    	        CFMLabel = "Lap HR";
+    	        CFMValue = LapHeartrate;
             	CFMFormat = "0decimal";
 			} else if (uClockFieldMetric == 48) {
     	        CFMValue = LastLapHeartrate;
-        	    CFMFormat = "0decimal";
+            	CFMFormat = "0decimal";
 			} else if (uClockFieldMetric == 49) {
 	            CFMValue = AverageHeartrate;
-    	        CFMFormat = "0decimal";        	    
+        	    CFMFormat = "0decimal";        	    
 			} else if (uClockFieldMetric == 50) {
 				CFMValue = (info.currentCadence != null) ? info.currentCadence : 0; 
-    	        CFMFormat = "0decimal";
+        	    CFMFormat = "0decimal";
 			} else if (uClockFieldMetric == 51) {
 		  		CFMValue = (info.altitude != null) ? Math.round(info.altitude).toNumber() : 0;
 		       	CFMFormat = "0decimal";        		
         	} else if (uClockFieldMetric == 45) {
     	        CFMValue = (info.currentHeartRate != null) ? info.currentHeartRate : 0;
-        	    CFMFormat = "0decimal";
+            	CFMFormat = "0decimal";
 	        } else if (uClockFieldMetric == 17) {
 	            CFMValue = Averagespeedinmpersec;
-    	        CFMFormat = "pace";            	
+        	    CFMFormat = "pace";            	
 			} else if (uClockFieldMetric == 55) {   
             	CFMValue = (info.currentSpeed != null or info.currentSpeed!=0) ? 100/info.currentSpeed : 0;
-            	CFMFormat = "2decimal";
+            	CFMLabel = "s/100m";
 	        } else if (uClockFieldMetric == 28) {
     	        CFMValue = (LapHeartrate != 0) ? mLapSpeed*60/LapHeartrate : 0;
-        	    CFMFormat = "2decimal";
+            	CFMFormat = "2decimal";
 			} else if (uClockFieldMetric == 29) {
     	        CFMValue = (LastLapHeartrate != 0) ? mLastLapSpeed*60/LastLapHeartrate : 0;
-        	    CFMFormat = "2decimal";
+            	CFMFormat = "2decimal";
 			} else if (uClockFieldMetric == 30) {
 	            CFMValue = (info.averageSpeed != null && AverageHeartrate != 0) ? info.averageSpeed*60/AverageHeartrate : 0;
-    	       CFMFormat = "2decimal";
+        	    CFMFormat = "2decimal";
 			} else if (uClockFieldMetric == 32) {
 	            CFMValue = (info.currentHeartRate != null && info.currentHeartRate != 0) ? mLapSpeed*60/info.currentHeartRate : 0;
-    	        CFMFormat = "2decimal";
+        	    CFMFormat = "2decimal";
 	        } else if (uClockFieldMetric == 17) {
 	            CFMValue = Averagespeedinmpersec;
-    	        CFMFormat = "pace";  
+        	    CFMFormat = "pace";  
         	} else if (uClockFieldMetric == 54) {
     	        CFMValue = (info.trainingEffect != null) ? info.trainingEffect : 0;
-        	    CFMFormat = "2decimal";           	
+            	CFMFormat = "2decimal";           	
 			} else if (uClockFieldMetric == 52) {
            		CFMValue = valueAsc;
             	CFMFormat = "0decimal";
@@ -407,52 +407,52 @@ class ExtramemView extends DatarunpremiumView {
 	        	if (Toybox.Activity.Info has :distanceToNextPoint) {
     	        	CFMValue = (info.distanceToNextPoint != null) ? info.distanceToNextPoint / unitD : 0;
     	        }
-        	    CFMFormat = "2decimal";
+            	CFMFormat = "2decimal";
 			} else if (uClockFieldMetric == 82) {
     	        if (Toybox.Activity.Info has :distanceToDestination) {
     	        	CFMValue = (info.distanceToDestination != null) ? info.distanceToNextPoint / unitD : 0;
     	        }
-        	    CFMFormat = "2decimal";
+            	CFMFormat = "2decimal";
            	} else if (uClockFieldMetric == 83) {
             	CFMValue = (maxHR != 0) ? currentHR*100/maxHR : 0;
             	CFMFormat = "0decimal";   
 			} else if (uClockFieldMetric == 84) {
     	        CFMValue = (maxHR != 0) ? LapHeartrate*100/maxHR : 0;
-        	    CFMFormat = "0decimal";
+            	CFMFormat = "0decimal";
 			} else if (uClockFieldMetric == 85) {
         	    CFMValue = (maxHR != 0) ? LastLapHeartrate*100/maxHR : 0;
             	CFMFormat = "0decimal";
 	        } else if (uClockFieldMetric == 86) {
     	        CFMValue = (maxHR != 0) ? AverageHeartrate*100/maxHR : 0;
-        	    CFMFormat = "0decimal";  
+            	CFMFormat = "0decimal";  
 	        } else if (uClockFieldMetric == 87) {
     	        CFMValue = (info.calories != null) ? info.calories : 0;
-        	    CFMFormat = "0decimal"; 
+            	CFMFormat = "0decimal"; 
 			} else if (uClockFieldMetric == 88) {   
             	if (mLastLapSpeed == null or info.currentSpeed==0) {
             		CFMValue = 0;
             	} else {
             		CFMValue = (mLastLapSpeed > 0.001) ? 100/mLastLapSpeed : 0;
             	}
-            	CFMFormat = "1decimal";
+        	    CFMFormat = "1decimal";
         	} else if (uClockFieldMetric == 89) {
     	        CFMValue = (sensorIter != null) ? sensorIter.next().data : 0;
     	        CFMValue = (utempunits == false) ? CFMValue : CFMValue*1.8+32;
-        	    CFMFormat = "1decimal";
+            	CFMFormat = "1decimal";
             } else if (uClockFieldMetric == 105) {
 	            CFMValue = tempeTemp;
 	            CFMValue = (utempunits == false) ? CFMValue+utempcalibration : CFMValue*1.8+32+utempcalibration;
-    	        CFMFormat = "0decimal";
+        	    CFMFormat = "1decimal";
         	} else if (uClockFieldMetric == 90) {
     	        CFMValue = LapCadence;
-        	    CFMValue = "0decimal";
+            	CFMFormat = "0decimal";
 			} else if (uClockFieldMetric == 91) {
     	        CFMValue = LastLapCadence;
-        	    CFMValue = "0decimal";
+            	CFMFormat = "0decimal";
 			} else if (uClockFieldMetric == 92) {
 	            CFMValue = AverageCadence;
-    	        CFMValue = "0decimal";
-    	    } else if (uClockFieldMetric == 107) {
+        	    CFMFormat = "0decimal";
+        	} else if (uClockFieldMetric == 107) {
 	            CFMValue = RealPowerTarget;
         	    CFMFormat = "power";
         	} else if (uClockFieldMetric == 121) {
@@ -468,7 +468,7 @@ class ExtramemView extends DatarunpremiumView {
 			}
 
 		//! Determine HR-zone for clockfield
-        if (uClockFieldMetric==46) {
+        if (uClockFieldMetric==46) {	
 			if (CFMValue >= uHrZones[5]) {
 				HelpVar = 6;			
 			} else if (CFMValue >= uHrZones[4]) {    	
@@ -487,25 +487,6 @@ class ExtramemView extends DatarunpremiumView {
 			CFMValue = HelpVar;
 		}
 
-        //! Determine HR-zone for clockfield
-        if (uClockFieldMetric==46) {
-			if (CFMValue >= uHrZones[5]) {
-				HelpVar = 6;			
-			} else if (CFMValue >= uHrZones[4]) {    	
-				HelpVar = Math.round(10*(5+(CFMValue-uHrZones[4]+0.00001)/(uHrZones[5]-uHrZones[4]+0.00001)))/10;			
-			} else if (CFMValue >= uHrZones[3]) {
-				HelpVar = Math.round(10*(4+(CFMValue-uHrZones[3]+0.00001)/(uHrZones[4]-uHrZones[3]+0.00001)))/10;			
-			} else if (CFMValue >= uHrZones[2]) {
-				HelpVar = Math.round(10*(3+(CFMValue-uHrZones[2]+0.00001)/(uHrZones[3]-uHrZones[2]+0.00001)))/10;
-			} else if (CFMValue >= uHrZones[1]) {
-				HelpVar = Math.round(10*(2+(CFMValue-uHrZones[1]+0.00001)/(uHrZones[2]-uHrZones[1]+0.00001)))/10;
-			} else if (CFMValue >= uHrZones[0]) {			
-				HelpVar = Math.round(10*(1+(CFMValue-uHrZones[0]+0.00001)/(uHrZones[1]-uHrZones[0]+0.00001)))/10;
-			} else {
-    	        HelpVar = Math.round(10*((CFMValue-hrRest+0.00001)/(uHrZones[0]-0.00001)))/10;
-			}		
-			CFMValue = HelpVar;        
-        }			 
 
 		//! Conditions for showing the demoscreen       
         if (uShowDemo == false) {

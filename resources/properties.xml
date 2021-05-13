@@ -1,7 +1,7 @@
 <resources>
 
   <properties>
-    <property id="pAppversion" type="string">2.33</property>
+    <property id="pAppversion" type="string">2.33b</property>
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>   
     <property id="pBottomLeftMetric" type="number">20</property>
@@ -22,8 +22,8 @@
 	
   <strings>
     <string id="AppName">Datarun premium with 4 metrics, main version</string>
-    <string id="AppVersion">2.33</string>
-    <string id="lDummysetting4version">Version 2.33 of Datarun premium with 4 metrics, main version (dummy setting)</string>
+    <string id="AppVersion">2.33b</string>
+    <string id="lDummysetting4version">Version 2.33b of Datarun premium with 4 metrics, main version (dummy setting)</string>
     <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
     <string id="lShowRedClock">Show red clock over all metrics before the start of an activity (useful for a race when the normal clock isn't visible)</string>
 	<string id="lTimeMenu">___Time items___</string>
