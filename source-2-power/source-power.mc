@@ -158,7 +158,7 @@ class PowerView extends CiqView {
             	fieldLabel[i] = "LL Pwr";
             	fieldFormat[i] = "power";
 	        } else if (metric[i] == 24) {
-    	        fieldValue[i] = (info.averagePower != null) ? info.averagePower : 0;
+    	        fieldValue[i] = AveragePower;
         	    fieldLabel[i] = "A Power";
             	fieldFormat[i] = "power";   
 			}
