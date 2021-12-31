@@ -136,7 +136,7 @@ class DatarunpremiumView extends Ui.DataField {
 		CCode = CCode*hashfunction((uHrZones[2]*uHrZones[4]+uHrZones[1]+uHrZones[3]).toString())-4943;
         CCode = (CCode > 0) ? CCode : -CCode; 
         CCode = CCode % 505344 + 51789; 
-        licenseOK = (umyNumber == mtest or CCode == uCCnumber) ? true : false;
+        licenseOK = (umyNumber == mtest) ? true : false;
     }
 
     //! Timer transitions from stopped to running state
