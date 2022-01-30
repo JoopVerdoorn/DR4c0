@@ -33,19 +33,14 @@ class CiqView extends ExtramemView {
     var uFTPHumid 							= 70;
     var uRealAltitude 						= 2;
     var uFTPAltitude 						= 200;
-    var workoutTarget 						;
     hidden var hasWorkoutStep 				= false;
     hidden var WorkoutStepLowBoundary		= 0;
     hidden var WorkoutStepHighBoundary		= 999;
     hidden var is32kBdevice					= false;
     var AveragePower						= 0;
     var WorkoutStepNr						= 0;
-    var WorkoutStepDuration 				= 0; 
-    var StartTimeNewStep					= 0;
+    var WorkoutStepDuration 				= 0;
     var StartDistanceNewStep				= 0;
-    var RemainingWorkoutTime  				= 0;
-    var RemainingWorkoutDistance			= 0;
-    var WorkoutStepDurationType  			= 9;
     hidden var AveragePower5sec  	 		= 0;
     hidden var AveragePower10sec  	 		= 0;
     hidden var mFontalertColorLow			= Graphics.COLOR_RED;
@@ -60,6 +55,8 @@ class CiqView extends ExtramemView {
 	var stopiteration                       = false;
 	var uVertgradeDist                      = 0.1;
 	var Vertgradsmooth  	        		= new[6]; 
+	var uLabelfontbig 						= true;
+	var Labelfont							= Graphics.FONT_TINY;
     
 		
     function initialize() {
@@ -86,6 +83,7 @@ class CiqView extends ExtramemView {
     	uFontalertColorLow = mApp.getProperty("pFontalertColorLow");
     	uFontalertColorHigh = mApp.getProperty("pFontalertColorHigh");
     	uVertgradeDist   = mApp.getProperty("pVertgradeDist");
+    	uLabelfontbig = mApp.getProperty("pLabelfontbig");
 
         uVertgradeDist = (uVertgradeDist<50) ? 0.050 : uVertgradeDist;
 	
@@ -165,6 +163,9 @@ class CiqView extends ExtramemView {
 		} else if (mySettings.screenWidth == 280 and mySettings.screenHeight == 280) {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin4);
 			Garminfontklein = Ui.loadResource(Rez.Fonts.Garmin6);
+		} else if (mySettings.screenWidth == 416 and mySettings.screenHeight == 416) {
+			Garminfont = Ui.loadResource(Rez.Fonts.Garmin7);
+			Garminfontklein = Ui.loadResource(Rez.Fonts.Garmin8);
 		} else {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
 			Garminfontklein = Ui.loadResource(Rez.Fonts.Garmin2);		
@@ -1050,7 +1051,7 @@ class CiqView extends ExtramemView {
         }        
        	mColourFont = originalFontcolor;
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
-		dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+		dc.drawText(xl, yl, Labelfont,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
 	function hashfunction(string) {

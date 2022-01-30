@@ -5,7 +5,9 @@
     	<font id="Garmin3" filename="fonts/Roadway79-alleencijfers.fnt" antialias="true"/>
     	<font id="Garmin4" filename="fonts/Roadway85-alleencijfers.fnt" antialias="true"/>
     	<font id="Garmin5" filename="fonts/Roadway57-alleencijfers.fnt" antialias="true"/>
-    	<font id="Garmin6" filename="fonts/Roadway62-alleencijfers.fnt" antialias="true"/>    	
+    	<font id="Garmin6" filename="fonts/Roadway62-alleencijfers.fnt" antialias="true"/>
+    	<font id="Garmin7" filename="fonts/Roadway126-alleencijfers.fnt" antialias="true"/>
+    	<font id="Garmin8" filename="fonts/Roadway107-alleencijfers.fnt" antialias="true"/>     	
 	</fonts>
   <properties>
     <property id="pUpperLeftMetric" type="number">0</property>
@@ -66,7 +68,7 @@
 
 	
   <strings>
-    <string id="lDummysetting4version">Version 2.44 of Datarun premium with 4 metrics, main version (dummy setting)</string>
+    <string id="lDummysetting4version">Version 2.46 of Datarun premium with 4 metrics, main version (dummy setting)</string>
     <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
     <string id="lShowRedClock">Show red clock over all metrics before the start of an activity (useful for a race when the normal clock isn't visible)</string>
 	<string id="lTimeMenu">___Time items___</string>
