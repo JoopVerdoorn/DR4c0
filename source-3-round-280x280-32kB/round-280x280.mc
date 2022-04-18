@@ -33,43 +33,32 @@ class DeviceView extends PowerView {
         dc.setColor(mColourLine, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
 
-        dc.drawLine(0, 130,  260, 130);
-        dc.drawLine(130, 31,  130, 232);
+        dc.drawLine(0, 140,  280, 140);
+        dc.drawLine(140, 34,  140, 250);
 
         //! Bottom horizontal divider
-        dc.drawLine(49, 232, 211, 232);
+        dc.drawLine(50, 250, 240, 250);
 
         //! Top horizontal divider
-        dc.drawLine(36, 31, 224, 31);	
-        
-        //! Display GPS accuracy
-        dc.setColor(mGPScolor, Graphics.COLOR_TRANSPARENT);
-        dc.fillRectangle(11, 5, 69, 26); 
-		if (uMilClockAltern == 1) {
-		   dc.fillRectangle(197, 5, 60, 26);
-		} else {
-		   dc.fillRectangle(178, 5, 60, 26);
-		}
-        
-        dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
-
-		//! Show number of laps, metric or clock with current time in top
-		myTime = Toybox.System.getClockTime(); 
-	    strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
-		if (uMilClockAltern == 0) {		
-			dc.drawText(130, -3, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
-		}
+        dc.drawLine(39, 34, 242, 34);	
 
 		//! Display metrics
+        dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
+
+		//! Show number of laps or clock with current time in top
+		myTime = Toybox.System.getClockTime(); 
+	    strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");	
+		dc.drawText(140, -2, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+
 		for (var i = 1; i < 5; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"067,092,078,013,101,079,044");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"072,099,084,015,109,085,048");
 	       	} else if ( i == 2 ) {	//!upper row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"189,092,197,133,101,181,044");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"202,099,215,147,109,195,048");
 	       	} else if ( i == 3 ) {  //!lower row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"067,166,078,013,160,079,216");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"072,177,084,015,170,085,232");
 	       	} else if ( i == 4 ) {	//!lower row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"189,166,197,133,175,181,216");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"202,177,215,147,187,195,232");
 	       	}    	       	 	
 		}
 		
@@ -78,35 +67,35 @@ class DeviceView extends PowerView {
 		var pwr = stats.battery;
 		var mBattcolor = (pwr > 15) ? mColourFont : Graphics.COLOR_RED;
 		dc.setColor(mBattcolor, Graphics.COLOR_TRANSPARENT);
-		dc.fillRectangle(100, 237, 59, 16);
-		dc.fillRectangle(159, 240, 3, 9);
+		dc.fillRectangle(107, 255, 63, 18);
+		dc.fillRectangle(170, 260, 4, 8);
 
 		dc.setColor(mColourBackGround, Graphics.COLOR_TRANSPARENT);
-		var Startstatuspwrbr = 102 + Math.round(pwr*0.55)  ;
-		var Endstatuspwrbr = 55 - Math.round(pwr*0.55) ;
-		dc.fillRectangle(Startstatuspwrbr, 239, Endstatuspwrbr, 12);	
+		var Startstatuspwrbr = 110 + Math.round(pwr*0.58)  ;
+		var Endstatuspwrbr = 58 - Math.round(pwr*0.58) ;
+		dc.fillRectangle(Startstatuspwrbr, 257, Endstatuspwrbr, 14);		
 		
 	   } else {
 	   //! Display demo screen
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 	
 		if (licenseOK == true) {
-      		dc.drawText(130, 40, Graphics.FONT_XTINY, "DR4c0", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-			dc.drawText(130, 120, Graphics.FONT_TINY, "Registered !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+			dc.drawText(140, 40, Graphics.FONT_XTINY, "DR4c0", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+			dc.drawText(140, 120, Graphics.FONT_TINY, "Registered !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(81, 160, Graphics.FONT_XTINY, "License code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(180, 160, Graphics.FONT_MEDIUM, mtest, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(81, 190, Graphics.FONT_XTINY, "C-Code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(170, 190, Graphics.FONT_MEDIUM, CCode, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 		} else {
-      		dc.drawText(130, 33, Graphics.FONT_XTINY, "License needed !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-      		dc.drawText(130, 63, Graphics.FONT_XTINY, "Run is recorded though", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+      		dc.drawText(140, 33, Graphics.FONT_XTINY, "License needed !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+      		dc.drawText(140, 63, Graphics.FONT_XTINY, "Run is recorded though", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(60, 105, Graphics.FONT_MEDIUM, "ID 0: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(161, 99, Graphics.FONT_NUMBER_MEDIUM, ID0, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(60, 155, Graphics.FONT_MEDIUM, "ID 1: " , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(161, 149, Graphics.FONT_NUMBER_MEDIUM, ID1, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(60, 205, Graphics.FONT_MEDIUM, "ID 2: " , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(161, 199, Graphics.FONT_NUMBER_MEDIUM, ID2, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-			}
+      	}
 	   }
 	   
 	}

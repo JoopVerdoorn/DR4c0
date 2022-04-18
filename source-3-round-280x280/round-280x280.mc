@@ -42,16 +42,24 @@ class DeviceView extends PowerView {
         //! Top horizontal divider
         dc.drawLine(39, 34, 242, 34);	
 
-		//! Display metrics
+		//! Display GPS accuracy
+		dc.setColor(mGPScolor, Graphics.COLOR_TRANSPARENT);
+		dc.fillRectangle(12, 6, 77, 28); 
+		if (uMilClockAltern == 1) {
+		   dc.fillRectangle(211, 6, 64, 28);
+		} else {
+		   dc.fillRectangle(191, 6, 64, 28);
+		}
         dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 
-		//! Show number of laps or clock with current time in top
+		//! Show number of laps, metric or clock with current time in top
 		myTime = Toybox.System.getClockTime(); 
 	    strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
 		if (uMilClockAltern == 0) {		
 			dc.drawText(140, -2, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
 		}
 
+		//! Display metrics
 		for (var i = 1; i < 5; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"072,099,084,015,109,085,048");

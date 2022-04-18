@@ -41,26 +41,15 @@ class DeviceView extends PowerView {
 
         //! Top horizontal divider
         dc.drawLine(33, 29, 207, 29);	
-        
-        //! Display GPS accuracy
-        dc.setColor(mGPScolor, Graphics.COLOR_TRANSPARENT);
-        dc.fillRectangle(10, 5, 64, 25); 
-		if (uMilClockAltern == 1) {
-		   dc.fillRectangle(183, 5, 55, 25);
-		} else {
-		   dc.fillRectangle(165, 5, 55, 25);
-		}
-
-        dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
-
-		//! Show number of laps, metric or clock with current time in top
-		myTime = Toybox.System.getClockTime(); 
-	    strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
-		if (uMilClockAltern == 0) {		
-			dc.drawText(120, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
-		}
 
 		//! Display metrics
+        dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
+
+		//! Show military clock in top
+		myTime = Toybox.System.getClockTime(); 
+	    strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");	
+		dc.drawText(120, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+
 		for (var i = 1; i < 5; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,085,072,012,099,073,041");
