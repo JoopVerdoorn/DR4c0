@@ -78,8 +78,8 @@ class CiqView extends ExtramemView {
 	hidden var overruleWourkout					= false;
     hidden var mPowerWarningunder				= 0;
     hidden var mPowerWarningupper 				= 999;
-    var ElapsedDistance                         = 1;
-    hidden var BenvanAerschotRequest            = "a";
+    hidden var ElapsedDistance                  = 1;
+    var uAlertsinBackground            			= true;
     hidden var ScreenInBackground               = false;
     
 		
@@ -113,6 +113,7 @@ class CiqView extends ExtramemView {
         uAlertbeep		 = mApp.getProperty("pAlertbeep");  
         uLapPwr4alerts   = mApp.getProperty("pLapPwr4alerts"); 
         overruleWourkout = mApp.getProperty("poverruleWourkout");
+        uAlertsinBackground = mApp.getProperty("pAlertsinBackground");
 
         uVertgradeDist = (uVertgradeDist<50) ? 0.050 : uVertgradeDist;
 	
@@ -542,9 +543,10 @@ class CiqView extends ExtramemView {
 		    //!Calculate power metrics
             mPowerWarningunder = uRequiredPower.substring(0, 3);
             mPowerWarningupper = uRequiredPower.substring(4, 7);
-            BenvanAerschotRequest = uRequiredPower.substring(7, 8);
             mPowerWarningunder = mPowerWarningunder.toNumber();
             mPowerWarningupper = mPowerWarningupper.toNumber(); 
+            
+            ElapsedDistance = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
 
 		    if (Activity has :getCurrentWorkoutStep) {
 			    workoutTarget = Toybox.Activity.getCurrentWorkoutStep();
@@ -606,13 +608,13 @@ class CiqView extends ExtramemView {
         			if (runalertPower>mPowerWarningupper) {
         				PowerWarning = 1;
     	    			if (vibrateseconds == uWarningFreq) {
-    		    			if (BenvanAerschotRequest.equals("b" ) == true and ScreenInBackground == false) {
+    		    			if (uAlertsinBackground == true and ScreenInBackground == false) {
         		    			Toybox.Attention.vibrate(vibrateData);
         		    		}
     			    		if (uAlertbeep == true) {
     				    		Attention.playTone(Attention.TONE_ALERT_HI);
     					    }
-        					if (BenvanAerschotRequest.equals("b" ) == true and ScreenInBackground == false) {
+        					if (uAlertsinBackground == true and ScreenInBackground == false) {
         		    			Toybox.Attention.vibrate(vibrateData);
         		    		}
         					vibrateseconds = 0;
@@ -623,7 +625,7 @@ class CiqView extends ExtramemView {
         						if (uAlertbeep == true) {
         							Attention.playTone(Attention.TONE_ALERT_LO);
     	    					}
-    		    			if (BenvanAerschotRequest.equals("b" ) == true and ScreenInBackground == false) {
+    		    			if (uAlertsinBackground == true and ScreenInBackground == false) {
         		    			Toybox.Attention.vibrate(vibrateData);
         		    		}
     			    		vibrateseconds = 0;
@@ -756,9 +758,6 @@ class CiqView extends ExtramemView {
 				}
 			}
 		}		
-
-
-		var ElapsedDistance = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
 		
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 		
