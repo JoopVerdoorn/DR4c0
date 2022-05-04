@@ -114,7 +114,6 @@ class CiqView extends ExtramemView {
         uLapPwr4alerts   = mApp.getProperty("pLapPwr4alerts"); 
         overruleWourkout = mApp.getProperty("poverruleWourkout");
         uAlertsinBackground = mApp.getProperty("pAlertsinBackground");
-
         uVertgradeDist = (uVertgradeDist<50) ? 0.050 : uVertgradeDist;
 	
 		uRealHumid = (uRealHumid != 0 ) ? uRealHumid : 1;
@@ -579,6 +578,16 @@ class CiqView extends ExtramemView {
 			    RemainingWorkoutDistance = 0;
 		    }
 		    
+		    if (Activity has :getCurrentWorkoutStep and overruleWourkout == false) {
+	        	if (WorkoutStepHighBoundary > 0) {
+	        		mPowerWarningunder = WorkoutStepLowBoundary;
+    	    		mPowerWarningupper = WorkoutStepHighBoundary; 
+        		} else {
+        			mPowerWarningunder = mPowerWarningunder.toNumber();
+                    mPowerWarningupper = mPowerWarningupper.toNumber(); 
+        		}
+        	}
+		    
 		    var runalertPower = 0;
 		    if ( uLapPwr4alerts == 0 ) {
 	    	    runalertPower 	 = runPower;
@@ -600,6 +609,7 @@ class CiqView extends ExtramemView {
 			    new Attention.VibeProfile( 100, 200 )
 		    ];
 
+
             PowerWarning = 0;
 	    	if (jTimertime != 0) {
 		      if (runalertPower>mPowerWarningupper or runalertPower<mPowerWarningunder) {	 
@@ -608,14 +618,22 @@ class CiqView extends ExtramemView {
         			if (runalertPower>mPowerWarningupper) {
         				PowerWarning = 1;
     	    			if (vibrateseconds == uWarningFreq) {
-    		    			if (uAlertsinBackground == true and ScreenInBackground == false) {
+    		    			if (ScreenInBackground == false) {  		//! scherm is op de voorgrond
         		    			Toybox.Attention.vibrate(vibrateData);
+        		    		} else { 									//! scherm is op de achtergrond
+        		    			if (uAlertsinBackground == true) { 		//! alerts mogen op de achtergrond
+        		    				Toybox.Attention.vibrate(vibrateData);
+        		    			}
         		    		}
     			    		if (uAlertbeep == true) {
     				    		Attention.playTone(Attention.TONE_ALERT_HI);
     					    }
-        					if (uAlertsinBackground == true and ScreenInBackground == false) {
+        					if (ScreenInBackground == false) {  		//! scherm is op de voorgrond
         		    			Toybox.Attention.vibrate(vibrateData);
+        		    		} else { 									//! scherm is op de achtergrond
+        		    			if (uAlertsinBackground == true) { 		//! alerts mogen op de achtergrond
+        		    				Toybox.Attention.vibrate(vibrateData);
+        		    			}
         		    		}
         					vibrateseconds = 0;
     	    			}
@@ -625,8 +643,12 @@ class CiqView extends ExtramemView {
         						if (uAlertbeep == true) {
         							Attention.playTone(Attention.TONE_ALERT_LO);
     	    					}
-    		    			if (uAlertsinBackground == true and ScreenInBackground == false) {
+    		    			if (ScreenInBackground == false) {  		//! scherm is op de voorgrond
         		    			Toybox.Attention.vibrate(vibrateData);
+        		    		} else { 									//! scherm is op de achtergrond
+        		    			if (uAlertsinBackground == true) { 		//! alerts mogen op de achtergrond
+        		    				Toybox.Attention.vibrate(vibrateData);
+        		    			}
         		    		}
     			    		vibrateseconds = 0;
     				    }
@@ -634,7 +656,7 @@ class CiqView extends ExtramemView {
 	    		 }
 		      }	 
     		}
-    		ScreenInBackground = true;		             
+    		ScreenInBackground = true;	             
         }
 	}
 
