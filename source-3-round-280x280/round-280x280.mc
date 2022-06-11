@@ -62,13 +62,13 @@ class DeviceView extends PowerView {
 		//! Display metrics
 		for (var i = 1; i < 5; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"072,099,084,015,109,085,048");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"072,099,084,012,109,085,048");
 	       	} else if ( i == 2 ) {	//!upper row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"202,099,215,147,109,195,048");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"202,099,215,145,109,195,048");
 	       	} else if ( i == 3 ) {  //!lower row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"072,177,084,015,170,085,232");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"072,177,084,012,170,085,232");
 	       	} else if ( i == 4 ) {	//!lower row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"202,177,215,147,187,195,232");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"202,177,215,145,187,195,232");
 	       	}    	       	 	
 		}
 		
